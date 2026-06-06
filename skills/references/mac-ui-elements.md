@@ -21,6 +21,8 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Do not assign shortcuts to every command; too many shortcuts reduce clarity and create conflicts.
 - Keep shortcuts visible in menus.
 - Provide keyboard navigation and selection for list/table/outline/detail workflows.
+- Arrow keys should move the active list/table/outline selection when that pane has focus.
+- Search fields in command/search workflows should not trap all keyboard behavior if users need arrow keys to move through results while keeping the query focused.
 
 ## Windows
 
@@ -42,6 +44,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Keep toolbar commands backed by menu items.
 - Provide toolbar customization when the app has a broad command set and users benefit from tailoring it.
 - Keep toolbar controls visually owned by the app/window chrome. Do not make them look like content-owned controls unless they actually are.
+- In SwiftUI, audit final toolbar placement in the running app. Semantic placements and distributed `.toolbar` modifiers can produce toolbars that do not match the intended Mac hierarchy.
 
 ## Tabs and Multi-Document Metaphors
 
@@ -59,6 +62,8 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Use outlines when hierarchy matters.
 - Use scope bars to filter/search the current content. Do not use a scope bar as primary navigation.
 - Preserve sidebar selection and expansion where useful.
+- Preserve nuanced selection styling: key-window selection, inactive-window selection, selected-but-not-focused rows, and context-menu target feedback are distinct states.
+- Prefer system `List`, table, or outline behavior when it gives correct Mac selection and context-menu affordances for free. Recreate those details before replacing it with a fully custom stack.
 
 ## Inspectors and Panels
 
@@ -118,6 +123,15 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Keep focus rings, selection, hover, pressed, inactive, and disabled states legible.
 - Validate input without surprising users. Avoid wiping values unless the user asked.
 - If a control applies immediately, make the result visible and reversible.
+- Context menus need a visible target when the menu applies to an object other than the selected object.
+- Inactive windows should visually recede; custom colored controls and rows should respect active-window state.
+
+## Drag and Drop
+
+- Treat drag and drop as a first-class Mac interaction: import files, reorder lists, move content between panes/windows, and expose valid drop targets where the model supports it.
+- Show source feedback, insertion points, target highlighting, copy/move semantics, and invalid-drop feedback.
+- Avoid drag-source visuals that can get stuck when a drop completes outside the window or app.
+- In SwiftUI, bridge to AppKit when the available drag APIs do not expose enough session lifecycle to keep source and target state correct.
 
 ## Preferences and Settings
 

@@ -9,6 +9,7 @@ Additional source notes incorporated here:
 - Daring Fireball on Nova: https://daringfireball.net/linked/2020/09/24/nova
 - Daring Fireball on Sketch: https://daringfireball.net/2020/11/sketch_mac_app_mac_apps
 - Daring Fireball on Safari 15 tabs: https://daringfireball.net/2021/10/the_tragedy_of_safari_15_quote_unquote_tabs
+- Paulo Andrade on SwiftUI Mac apps: https://pfandrade.me/blog/mac-assed-swiftui-app/
 
 ## Core Definition
 
@@ -87,6 +88,19 @@ Every deviation has a cognitive cost. Pay it back with a visibly better experien
 - Catalyst and web/Electron-style stacks need extra scrutiny: navigation, windowing, menu behavior, pointer handling, keyboard shortcuts, text editing, performance, accessibility, and system services often reveal the uncanny valley.
 - Native code is not automatically better for every subsystem. Extension ecosystems, scripting, import/export formats, and plugin APIs can reasonably use more portable technology if the Mac shell remains excellent.
 - Judge the app by citizenship and feel, not toolkit labels alone. Cocoa, AppKit, SwiftUI, Catalyst, Electron, and web technologies can all succeed or fail depending on how completely they honor Mac behavior.
+
+## SwiftUI Mac Reality
+
+SwiftUI can ship a good Mac app, but pure SwiftUI still needs scrutiny where AppKit solved details years ago:
+
+- Selection has layers: active-window selection, inactive-window selection, selected-but-not-focused state, and context-menu target. Users need to see which object is selected and which pane receives keyboard input.
+- System `List` often gets Mac selection and context-menu behavior right because it inherits table behavior. Custom `ScrollView`/`LazyVStack` lists must recreate focus, emphasized selection, inactive-window appearance, and context-menu target feedback deliberately.
+- Read `appearsActive` and equivalent focus/emphasis state when styling custom selected rows. A selected row in an inactive window should not look like the key-window selection.
+- Right-clicking an unselected object should not casually change selection. If the menu applies to the clicked object, show a separate context target affordance.
+- Drag and drop is core Mac behavior. SwiftUI drag APIs may not expose enough drag-session state; avoid UI that can get stuck dimmed or stale after drops outside the window. Bridge to AppKit when source/session feedback matters.
+- Keyboard support must go beyond command shortcuts. Lists need arrow-key navigation; search fields should allow typing while arrowing through results when that matches the task; panes need clear focus behavior.
+- SwiftUI toolbar placement can be too abstract for complex Mac windows. Design one coherent Mac toolbar; do not accept scattered `.toolbar` modifiers if they produce surprising placement or mix sidebar/detail ownership.
+- Reuse across iOS, iPadOS, and macOS is valuable, but not when it erases Mac-only behaviors. Fork or bridge platform-specific interaction where needed.
 
 ## Professional Tool Trust
 
@@ -177,6 +191,7 @@ Ask these while reviewing a macOS UI:
 - Did a visual change make the user think about something that used to be automatic?
 - Are we copying iOS, copying current Apple visuals, or serving Mac behavior?
 - Does the technical foundation cap how Mac-assed this can become?
+- If this is SwiftUI, did we test the Mac details SwiftUI does not guarantee: focus, selection emphasis, context menus, drag sessions, keyboard navigation, and toolbar placement?
 - Would a seasoned Mac user find the behavior natural after the first minute?
 - Would a new user still see what is actionable?
 - Does the app feel made by someone with an opinion, or assembled from defaults?
