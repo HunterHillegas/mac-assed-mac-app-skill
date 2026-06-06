@@ -46,7 +46,11 @@ python3 <path-to-quick_validate.py> skills
 
 ## Install
 
-Codex discovers local skills at `~/.codex/skills/<skill-name>/SKILL.md`. This repo's canonical package is [skills/](skills/), which should be installed as:
+This repo's canonical package is [skills/](skills/). Systems that support `SKILL.md` folders can use it directly. Systems that do not support Skills can use a rule file that points agents at the package.
+
+### Codex
+
+Codex discovers local skills at `~/.codex/skills/<skill-name>/SKILL.md`. Install this package as:
 
 ~~~text
 ~/.codex/skills/mac-assed-mac-app/
@@ -54,7 +58,7 @@ Codex discovers local skills at `~/.codex/skills/<skill-name>/SKILL.md`. This re
 
 Use one of these install styles.
 
-### Symlink For Development
+#### Symlink For Development
 
 Best when editing this repo often. Only use this when `~/.codex/skills/mac-assed-mac-app` does not already exist, or after moving the existing installed copy aside.
 
@@ -65,7 +69,7 @@ ln -s ~/Development/OSS/mac-assed-mac-app-skill/skills ~/.codex/skills/mac-assed
 
 Repo edits then show up in the installed skill path without another copy step.
 
-### Copy For Distribution
+#### Copy For Distribution
 
 Best when you want the installed skill to be a snapshot:
 
@@ -76,7 +80,7 @@ cp -R skills/. ~/.codex/skills/mac-assed-mac-app/
 
 Repeat the copy after edits if you use this style.
 
-### Verify Install
+#### Verify Install
 
 When a local validator exists:
 
@@ -85,6 +89,71 @@ python3 <path-to-quick_validate.py> ~/.codex/skills/mac-assed-mac-app
 ~~~
 
 Then restart Codex after first install, or any time the old skill behavior is still showing up.
+
+### Claude Code
+
+Claude Code discovers personal Skills in `~/.claude/skills/` and project Skills in `.claude/skills/`. This package can be installed the same way because it already has a root `SKILL.md`.
+
+#### Personal Skill
+
+Symlink while developing:
+
+~~~sh
+mkdir -p ~/.claude/skills
+ln -s ~/Development/OSS/mac-assed-mac-app-skill/skills ~/.claude/skills/mac-assed-mac-app
+~~~
+
+Or copy a snapshot:
+
+~~~sh
+mkdir -p ~/.claude/skills/mac-assed-mac-app
+cp -R skills/. ~/.claude/skills/mac-assed-mac-app/
+~~~
+
+#### Project Skill
+
+From a target repo, copy the package into the project-local Claude skills directory:
+
+~~~sh
+mkdir -p .claude/skills/mac-assed-mac-app
+cp -R ~/Development/OSS/mac-assed-mac-app-skill/skills/. .claude/skills/mac-assed-mac-app/
+~~~
+
+Ask Claude to list available Skills or inspect `.claude/skills/mac-assed-mac-app/SKILL.md` if it does not trigger.
+
+Reference: [Claude Code Skills](https://docs.claude.com/en/docs/claude-code/skills).
+
+### Cursor
+
+Cursor does not discover `SKILL.md` folders as Skills. Use a Cursor Rule that points the agent at this package.
+
+#### Project Rule
+
+In the target repo, copy the package into `.cursor/rules/` and add an `.mdc` rule:
+
+~~~sh
+mkdir -p .cursor/rules/mac-assed-mac-app
+cp -R ~/Development/OSS/mac-assed-mac-app-skill/skills/. .cursor/rules/mac-assed-mac-app/
+~~~
+
+Create `.cursor/rules/mac-assed-mac-app.mdc`:
+
+~~~md
+---
+description: Use when designing, auditing, reviewing, or updating desktop macOS app UI.
+alwaysApply: false
+---
+
+Use the Mac-Assed Mac App skill package for desktop macOS UI work.
+
+Start by reading `.cursor/rules/mac-assed-mac-app/SKILL.md`.
+Load referenced files from `.cursor/rules/mac-assed-mac-app/references/` only as needed.
+Keep guidance scoped to desktop Mac apps, not iOS, web, or generic product design.
+~~~
+
+For a global Cursor setup, add a User Rule in Cursor Settings > Rules with the same instruction, pointing at this repo path if Cursor can read it. Project Rules are more reliable because the reference files live inside the target repo.
+
+Reference: [Cursor Rules](https://docs.cursor.com/context/rules).
 
 ## License
 
