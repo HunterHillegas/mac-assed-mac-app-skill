@@ -37,18 +37,54 @@ rg -n "pdftotext|/Users/|\.pdf|source PDFs|original filenames" skills
 git diff --check
 ~~~
 
-If a skill validation helper is available in the local Codex install, run it against `skills/` before handoff.
+If a Codex skill validator is available, find it and run it against the package:
 
-## Install Locally
+~~~sh
+find ~/.codex -name quick_validate.py -type f
+python3 <path-to-quick_validate.py> skills
+~~~
 
-To refresh the installed Codex skill from this repo:
+## Install
+
+Codex discovers local skills at `~/.codex/skills/<skill-name>/SKILL.md`. This repo's canonical package is [skills/](skills/), which should be installed as:
+
+~~~text
+~/.codex/skills/mac-assed-mac-app/
+~~~
+
+Use one of these install styles.
+
+### Symlink For Development
+
+Best when editing this repo often. Only use this when `~/.codex/skills/mac-assed-mac-app` does not already exist, or after moving the existing installed copy aside.
+
+~~~sh
+mkdir -p ~/.codex/skills
+ln -s ~/Development/OSS/mac-assed-mac-app-skill/skills ~/.codex/skills/mac-assed-mac-app
+~~~
+
+Repo edits then show up in the installed skill path without another copy step.
+
+### Copy For Distribution
+
+Best when you want the installed skill to be a snapshot:
 
 ~~~sh
 mkdir -p ~/.codex/skills/mac-assed-mac-app
 cp -R skills/. ~/.codex/skills/mac-assed-mac-app/
 ~~~
 
-Restart Codex if the old skill behavior is still showing up after install.
+Repeat the copy after edits if you use this style.
+
+### Verify Install
+
+When a local validator exists:
+
+~~~sh
+python3 <path-to-quick_validate.py> ~/.codex/skills/mac-assed-mac-app
+~~~
+
+Then restart Codex after first install, or any time the old skill behavior is still showing up.
 
 ## License
 
