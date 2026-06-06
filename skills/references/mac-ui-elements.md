@@ -5,6 +5,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 ## Menus
 
 - Keep standard menus recognizable: app, File, Edit, Format when relevant, View, app-specific menus, Window, Help.
+- Keep standard menus in the expected order. The menu bar is one of the strongest signals that an app belongs on the Mac.
 - Use menus as the authoritative command catalog. Toolbar buttons, contextual menus, keyboard shortcuts, and gestures are accelerators, not replacements.
 - Put app-wide commands in the app menu; document/content commands in File/Edit/View/app-specific menus; window management in Window; help/searchable help in Help.
 - Group related commands with separators. Avoid giant flat menus.
@@ -40,6 +41,16 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Keep icon size, weight, perspective, and metaphor consistent.
 - Keep toolbar commands backed by menu items.
 - Provide toolbar customization when the app has a broad command set and users benefit from tailoring it.
+- Keep toolbar controls visually owned by the app/window chrome. Do not make them look like content-owned controls unless they actually are.
+
+## Tabs and Multi-Document Metaphors
+
+- Tabs should look and behave like tabs when they represent multiple documents, pages, views, or sessions within one window.
+- The active tab must be unambiguous in light mode, dark mode, with two tabs, and with many tabs.
+- Tabs should visually connect to the chrome or content region they control. Avoid detached button-like tabs when the user needs a document/page metaphor.
+- Do not merge tab identity, location fields, and unrelated commands into one ambiguous control surface unless testing proves the ownership and active state are obvious.
+- Keep close controls discoverable and spatially stable. Do not hide destructive tab-close behavior behind a representative icon or an unguessable hover transformation.
+- If a new tab design is less space-efficient or scales worse for heavy tab users, it is a regression even if it looks cleaner with a few tabs.
 
 ## Sidebars, Source Lists, Scope Bars
 
@@ -87,6 +98,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 
 - Push button: immediate command.
 - Icon button: command where the icon is obvious or labeled by tooltip/accessibility.
+- Do not turn an icon that represents an object into a destructive command for that object on hover.
 - Checkbox: independent on/off option.
 - Radio buttons: small mutually exclusive set where all choices should be visible.
 - Pop-up button: mutually exclusive choices when space is tight or choices are secondary.
@@ -110,7 +122,16 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 ## Preferences and Settings
 
 - Use preferences/settings for durable user choices.
+- The app's settings must open from `Settings...` and `Command-,`.
+- Settings should be a real window or panel, not an editor tab, web page, or raw configuration file.
 - Do not hide primary workflow controls in preferences.
 - Group preferences by user goals, not implementation subsystems.
 - Keep labels concrete and searchable.
 - Apply changes immediately when safe; otherwise make Apply/Revert behavior explicit.
+
+## Services and System Text Behavior
+
+- Support the Services menu where text, files, URLs, or selected objects should participate in system workflows.
+- Make Services available from relevant context menus, not only the menu bar.
+- Text fields and text views should preserve normal Mac behavior: standard editing shortcuts, selection, spelling, substitutions, smart punctuation preferences, user key bindings, dictation, VoiceOver, and focus rings.
+- Be skeptical of custom text editors and cross-platform text fields. They need explicit checks for Mac editing behavior and accessibility.

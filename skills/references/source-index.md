@@ -24,6 +24,8 @@ This is a map of the self-contained derived guidance bundled with the skill. It 
 - Text style: ellipses, colons, labels, capitalization, contractions, punctuation, alert wording, user/developer terminology.
 - Mac-assedness: Mac behavior over mere Mac appearance, structural conventions vs expressive opportunities, fun and craft, native technology tradeoffs, custom icon/control judgment, and examples from Sketch, Nova, and iA Writer.
 - Production examples: screenshots of dense professional tools and content apps that keep Mac structure intact while expressing product identity.
+- Good Mac citizenship: standard menus, Settings behavior, Services, text-field semantics, toolkit-independent platform fit, documentation, data ownership, and durable professional trust.
+- Safari 15 caution: tabs, active-state clarity, content-vs-chrome ownership, visual metaphor, hover-hidden destructive controls, and change that worsens learned behavior.
 
 ## Version Bias
 

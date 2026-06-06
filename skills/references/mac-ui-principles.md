@@ -23,6 +23,7 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 - Make important commands findable in the menu bar.
 - Make clickable things look clickable and draggable things look draggable.
 - Do not hide essential actions only behind hover states, gestures, contextual menus, or toolbar icons.
+- Do not hide destructive actions behind hover-only transformations or controls that look like object identity.
 - Keep empty states useful by offering the first real action, not marketing copy.
 - Use standard controls and placements so users can transfer habits from other Mac apps.
 
@@ -50,6 +51,11 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 - Avoid reflowing layouts in ways that make controls jump during ordinary use.
 - Show saved/synced/error states truthfully.
 - Keep destructive consequences explicit and reversible when possible.
+- Evolve established UI by reducing thought, not adding it. If a redesign makes users consciously reason about active state, ownership, or basic commands they used to read instantly, it is likely worse.
+- Familiar visual metaphors are functional, not decorative. Remove or restyle them only when the replacement preserves the same clarity.
+- For apps that sync or bridge external systems, keep data ownership clear. Prefer official APIs, open formats, or compatible canonical storage over private lock-in.
+- Documentation and onboarding are part of trust for professional Mac apps. A deep tool should explain itself with the same care it puts into the interface.
+- Durable pricing, trials, update terms, and licensing can affect product trust. They are not UI controls, but they shape whether the app feels like a professional Mac tool users can keep relying on.
 
 ## Mac App Shape
 
@@ -60,6 +66,7 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 - Support keyboard, mouse, trackpad, accessibility, localization, drag and drop, Help, services, printing, and system panels where they fit the app.
 - Treat Mac identity as behavior plus affordances, not just visual style. A current Apple-looking app can still feel wrong if menus, windows, selection, shortcuts, density, or hierarchy are wrong.
 - Let the app have a point of view. The goal is not generic system cosplay; the goal is a tool that belongs on the Mac and has a reason to exist.
+- Prefer "good Mac citizen" as a practical test: menus, settings, services, text fields, keyboard behavior, windowing, typography, and symbols should behave like users expect on macOS, regardless of toolkit.
 
 ## Older Guidance, Modern Use
 
