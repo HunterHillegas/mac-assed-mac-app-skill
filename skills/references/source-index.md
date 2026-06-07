@@ -9,6 +9,7 @@ This is a map of the self-contained derived guidance bundled with the skill. It 
 - `mac-ui-elements.md`: concrete behavior rules for menus, windows, toolbars, sidebars, panels, popovers, dialogs, alerts, controls, and preferences.
 - `mac-ui-text.md`: capitalization, ellipses, colons, labels, menu copy, alert copy, help text, and punctuation.
 - `mac-assedness.md`: expressive Mac software, platform identity, technical foundation, custom UI decision-making, and modern macOS tradeoffs.
+- `current-macos-design.md`: current Apple source deltas for macOS 26+, AppKit structure, Liquid Glass, accessibility, icons, documents, undo, text, pasteboard, and menu-icon judgment.
 - `production-app-examples.md`: production screenshots and notes for Proxyman and NetNewsWire as Mac-assed calibration examples.
 
 ## Derived Topic Coverage
@@ -27,6 +28,7 @@ This is a map of the self-contained derived guidance bundled with the skill. It 
 - Good Mac citizenship: standard menus, Settings behavior, Services, text-field semantics, toolkit-independent platform fit, documentation, data ownership, and durable professional trust.
 - Safari 15 caution: tabs, active-state clarity, content-vs-chrome ownership, visual metaphor, hover-hidden destructive controls, and change that worsens learned behavior.
 - SwiftUI Mac reality: pure SwiftUI can work, but selection nuance, context-menu targets, drag-session feedback, keyboard navigation, and toolbar placement need explicit Mac verification or AppKit bridging.
+- Current macOS source deltas: Liquid Glass as a functional layer, toolbars and sidebars as ownership signals, current control sizing, scroll edge legibility, menu-icon restraint, Mac VoiceOver structure, document/undo architecture, text/pasteboard contracts, and current icon resources.
 
 ## Version Bias
 

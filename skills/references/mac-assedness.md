@@ -119,12 +119,15 @@ Mac-assed professional apps often earn trust outside the visible UI:
 - Keep browser/app chrome visually distinct from user content when ownership matters. Users should not have to ask whether a control belongs to the app or the content.
 - Do not let glass/translucency reduce legibility, contrast, or control recognition.
 - Do not let color-matching, translucency, or edge-to-edge content blur which layer owns a button, tab, toolbar, or selection.
+- Use Liquid Glass only where a control or navigation surface genuinely sits at the top of the interface hierarchy.
+- Keep hard dividers, custom toolbar backgrounds, and extra borders only when they add clearer structure than the current system treatment.
 - Distinguish hierarchical depth from sculptural depth:
   - Hierarchical depth communicates what controls belong to and what layer they affect.
   - Sculptural depth makes something look tactile or dimensional.
 - Sculptural depth without hierarchy can look rich while making the interface harder to understand.
 - Match the platform's level of visual quality, but do not copy it uncritically when it hurts clarity.
 - The active object should be the visually clearest object, not the most muted one. Selection and active-tab states must pop in light mode, dark mode, and small sets.
+- Current menu icons are not automatically good. Use them when the symbol communicates faster than text; remove or avoid them when they create clutter, inconsistent indentation, or harder scanning.
 
 ## Expressiveness Without Slop
 

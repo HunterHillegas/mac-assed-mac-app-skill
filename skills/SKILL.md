@@ -18,6 +18,7 @@ Load only what the task needs:
 - [references/mac-ui-elements.md](references/mac-ui-elements.md): menus, windows, toolbars, sidebars, panels, dialogs, alerts, and controls.
 - [references/mac-ui-text.md](references/mac-ui-text.md): labels, capitalization, ellipses, punctuation, terminology, and alert copy.
 - [references/mac-assedness.md](references/mac-assedness.md): platform identity, expressive software, custom UI judgment, modern macOS tradeoffs, and examples.
+- [references/current-macos-design.md](references/current-macos-design.md): current Apple design-source deltas for macOS 26+, AppKit, Liquid Glass, accessibility, icons, documents, undo, and menu-icon judgment.
 - [references/production-app-examples.md](references/production-app-examples.md): production screenshots that demonstrate Mac-assed structure and identity.
 - [references/source-index.md](references/source-index.md): self-contained map of the derived topics.
 
