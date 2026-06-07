@@ -43,6 +43,7 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 - Explain errors in user terms: what happened, why it matters, and what the user can do next.
 - Use animation to clarify relationships or transitions: sheet attached to a window, item moved into a list, window minimized, popover source. Do not animate for decoration.
 - Background components should communicate through the foreground app whenever a foreground app exists.
+- Current materials and scroll edge effects should clarify which controls float above content. They are not decorative motion or texture.
 
 ## Stability and Trust
 
@@ -67,6 +68,8 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 - Treat Mac identity as behavior plus affordances, not just visual style. A current Apple-looking app can still feel wrong if menus, windows, selection, shortcuts, density, or hierarchy are wrong.
 - Let the app have a point of view. The goal is not generic system cosplay; the goal is a tool that belongs on the Mac and has a reason to exist.
 - Prefer "good Mac citizen" as a practical test: menus, settings, services, text fields, keyboard behavior, windowing, typography, and symbols should behave like users expect on macOS, regardless of toolkit.
+- For document apps, include document identity, edited state, autosave/versions where relevant, undo, print, reveal/open/export paths, and multi-window behavior in the app shape.
+- Treat accessibility as part of the shape: VoiceOver containers, keyboard paths, rotors or equivalent navigation, and non-hover alternatives for hidden controls.
 
 ## Older Guidance, Modern Use
 

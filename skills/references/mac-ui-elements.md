@@ -39,11 +39,14 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Use toolbars for frequent window-level commands.
 - Do not put every menu command in the toolbar.
 - Group toolbar items by task.
+- In current macOS, group toolbar items by function and frequency so related controls share clear ownership.
 - Use labels when icons are not self-evident.
 - Keep icon size, weight, perspective, and metaphor consistent.
 - Keep toolbar commands backed by menu items.
 - Provide toolbar customization when the app has a broad command set and users benefit from tailoring it.
 - Keep toolbar controls visually owned by the app/window chrome. Do not make them look like content-owned controls unless they actually are.
+- Do not make noninteractive toolbar status, titles, or counters look like buttons, including when adopting glass-backed toolbar items.
+- Use prominent toolbar treatment sparingly for state or a truly primary action.
 - In SwiftUI, audit final toolbar placement in the running app. Semantic placements and distributed `.toolbar` modifiers can produce toolbars that do not match the intended Mac hierarchy.
 
 ## Tabs and Multi-Document Metaphors
@@ -60,6 +63,8 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Use sidebars/source lists for persistent navigation among sources, collections, accounts, folders, libraries, or scopes.
 - Keep sidebars scannable. Avoid stuffing controls into navigation rows.
 - Use outlines when hierarchy matters.
+- Preserve the distinction between a navigation sidebar and a property inspector. Current sidebars may float above content; inspectors remain selection/property surfaces.
+- Let content extend behind a floating sidebar only when the content remains readable, centered, and unobscured.
 - Use scope bars to filter/search the current content. Do not use a scope bar as primary navigation.
 - Preserve sidebar selection and expansion where useful.
 - Preserve nuanced selection styling: key-window selection, inactive-window selection, selected-but-not-focused rows, and context-menu target feedback are distinct states.
@@ -104,6 +109,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Push button: immediate command.
 - Icon button: command where the icon is obvious or labeled by tooltip/accessibility.
 - Do not turn an icon that represents an object into a destructive command for that object on hover.
+- Add menu or toolbar icons when they speed recognition of object types, destinations, spatial layouts, devices, apps, media, or key scanned actions. Skip them when they merely restate text or add alignment noise.
 - Checkbox: independent on/off option.
 - Radio buttons: small mutually exclusive set where all choices should be visible.
 - Pop-up button: mutually exclusive choices when space is tight or choices are secondary.
@@ -149,3 +155,4 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Make Services available from relevant context menus, not only the menu bar.
 - Text fields and text views should preserve normal Mac behavior: standard editing shortcuts, selection, spelling, substitutions, smart punctuation preferences, user key bindings, dictation, VoiceOver, and focus rings.
 - Be skeptical of custom text editors and cross-platform text fields. They need explicit checks for Mac editing behavior and accessibility.
+- Use pasteboard types and Services for user-owned data that should move between apps: files, URLs, images, rich text, selected objects, and exports.

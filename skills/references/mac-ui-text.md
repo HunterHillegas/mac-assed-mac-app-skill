@@ -85,6 +85,8 @@ Self-contained text, label, and command guidance derived from Mac OS X / OS X HI
 - Use tooltips/help tags for controls whose purpose is not obvious from label/icon.
 - Accessibility labels should name the control and its state/action, not describe visual appearance.
 - Help text should answer task questions: what this does, when to use it, what happens next.
+- For complex Mac windows, accessibility grouping should match how a user navigates: toolbar, sidebar, content, inspector, table, selected item, and detail.
+- Hover-only controls need another named path through visible UI, menus, context menus, or accessibility actions.
 
 ## Punctuation and Spacing
 
