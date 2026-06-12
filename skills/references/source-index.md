@@ -7,6 +7,7 @@ This is a map of the self-contained derived guidance bundled with the skill. It 
 - `hig-ui-rules.md`: compact audit rulebook and common violations.
 - `mac-ui-principles.md`: app shape, user control, feedback, direct manipulation, trust, and modern use of older Mac guidance.
 - `mac-ui-elements.md`: concrete behavior rules for menus, windows, toolbars, sidebars, panels, popovers, dialogs, alerts, controls, and preferences.
+- `mac-layout-structure.md`: concrete guidance for Mac layout balance, settings/forms, toolbars, sidebars, inspectors, and bottom bars.
 - `mac-ui-text.md`: capitalization, ellipses, colons, labels, menu copy, alert copy, help text, and punctuation.
 - `mac-assedness.md`: expressive Mac software, platform identity, technical foundation, custom UI decision-making, and modern macOS tradeoffs.
 - `current-macos-design.md`: current Apple source deltas for macOS 26+, AppKit structure, Liquid Glass, accessibility, icons, documents, undo, text, pasteboard, and menu-icon judgment.
@@ -21,6 +22,7 @@ This is a map of the self-contained derived guidance bundled with the skill. It 
 - Icons: app icons, document icons, toolbar icons, sidebar icons, perspective, texture, high-resolution resources, consistent metaphors.
 - Menus: menu behavior, naming, grouping, dynamic items, toggles, symbols, hierarchy, menu bar menus, contextual menus, Dock menus.
 - Windows: window appearance, title bars, scrolling, moving, layering, main/key/inactive states, full screen, proxy/title behavior, toolbars, scope bars, sidebars, bottom bars, popovers, panels, dialogs, sheets, preferences, open/choose/save/print/find dialogs, alerts.
+- Layout structure: center-equalized window composition, consistent margins, baseline alignment, grouped settings forms, toolbar command ranking, sidebar width constraints, inspector behavior, and bottom-bar use.
 - Controls: buttons, selection controls, text controls, indicators, sliders/steppers, segmented controls, tab views, group boxes, disclosure/progressive detail, control state.
 - Text style: ellipses, colons, labels, capitalization, contractions, punctuation, alert wording, user/developer terminology.
 - Mac-assedness: Mac behavior over mere Mac appearance, structural conventions vs expressive opportunities, fun and craft, native technology tradeoffs, custom icon/control judgment, and examples from Sketch, Nova, and iA Writer.

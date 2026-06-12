@@ -14,6 +14,10 @@ A Mac-assed Mac app is a phrase from Collin Donnell for an app that is unapologe
 - [skills/agents/openai.yaml](skills/agents/openai.yaml): UI-facing metadata for Codex skill listings.
 - [skills/references/](skills/references/): self-contained reference files loaded only when a task needs them.
 
+## Credits
+
+Additional structure and calibration were informed by Mario Guzman's [Design Resources for Mac](https://marioaguzman.github.io/design/) and Justin Wetch's [HIGAgentSkills](https://github.com/justinwetch/HIGAgentSkills). This skill remains a separate, macOS-desktop-focused reference package; it does not redistribute their source text.
+
 ## Scope
 
 This skill is for desktop Mac app UI. Keep it focused on macOS, AppKit, SwiftUI-on-Mac, Catalyst-as-Mac, and other desktop Mac app surfaces.
