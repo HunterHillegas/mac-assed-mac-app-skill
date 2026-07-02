@@ -34,11 +34,13 @@ Keep the skill package concise:
 - Reference files should remain one level below `SKILL.md`.
 - Do not put README, install guides, changelogs, source PDFs, extraction notes, or local source paths inside `skills/`.
 - If `SKILL.md` changes, review `skills/agents/openai.yaml` for stale display text.
+- Core rules are intentionally repeated across reference files so partially loaded references stand alone. When editing a rule, grep for its other statements so the copies do not drift.
 
 Useful local checks:
 
 ~~~sh
 rg -n "pdftotext|/Users/|\.pdf|source PDFs|original filenames" skills
+rg -n '\.\.\.' skills  # UI text must use the U+2026 ellipsis character; the one hit describing the violation in hig-ui-rules.md is expected
 git diff --check
 ~~~
 

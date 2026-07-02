@@ -41,8 +41,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 
 - Use toolbars for frequent window-level commands.
 - Do not put every menu command in the toolbar.
-- Group toolbar items by task.
-- In current macOS, group toolbar items by function and frequency so related controls share clear ownership.
+- Group toolbar items by task, function, and frequency so related controls share clear ownership.
 - Use labels when icons are not self-evident.
 - Keep icon size, weight, perspective, and metaphor consistent.
 - Keep toolbar commands backed by menu items.
@@ -159,7 +158,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 ## Preferences and Settings
 
 - Use preferences/settings for durable user choices.
-- The app's settings must open from `Settings...` and `Command-,`.
+- The app's settings must open from `Settings…` and `Command-,`. On modern macOS the app-menu item is named `Settings…`; `Preferences…` is the historical name.
 - Settings should be a real window or panel, not an editor tab, web page, or raw configuration file.
 - Do not hide primary workflow controls in preferences.
 - Do not ship a complex Mac app with no durable customization. Good defaults matter, but power users should be able to shape frequent workflows.

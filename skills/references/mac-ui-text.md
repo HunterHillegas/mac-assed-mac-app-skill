@@ -32,7 +32,7 @@ Self-contained text, label, and command guidance derived from Mac OS X / OS X HI
 
 - Use the single ellipsis character `…`, not three periods.
 - Add an ellipsis to a command or button when the user must provide more information before the action executes.
-- Good ellipsis examples: `Open…`, `Save As…`, `Export…`, `Find…`, `Print…`, `Preferences…`, `Customize Toolbar…`.
+- Good ellipsis examples: `Open…`, `Save As…`, `Export…`, `Find…`, `Print…`, `Settings…`, `Customize Toolbar…`.
 - Do not add an ellipsis when the action executes immediately.
 - Do not add an ellipsis just because an alert might appear in some cases.
 - Do not add an ellipsis for commands that simply show a panel or inspector: `Get Info`, `Show Inspector`, `Show Fonts`, `Show Colors`.

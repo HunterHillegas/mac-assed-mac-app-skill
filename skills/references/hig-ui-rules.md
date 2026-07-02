@@ -34,7 +34,7 @@ Use this as the working rulebook when updating macOS UIs. It synthesizes the Mac
 - Use contextual menus for shortcuts to visible-object actions, not as the only home for essential commands.
 - Name menu items as actions. Prefer clear verbs: `Export…`, `Duplicate`, `Show Inspector`, `Hide Sidebar`.
 - Use title-style capitalization for menu titles, menu items, push buttons, and toolbar labels.
-- Use a U+2026 ellipsis for commands that need more user input before executing: `Open…`, `Export…`, `Find…`, `Print…`, `Preferences…`.
+- Use a U+2026 ellipsis for commands that need more user input before executing: `Open…`, `Export…`, `Find…`, `Print…`, `Settings…`.
 - Do not use an ellipsis for commands that execute immediately, merely show a panel, or only sometimes show an alert: `Save`, `Duplicate`, `Get Info`, `Show Inspector`, `Close`.
 - Use toggled menu items to reflect state. Make state text unambiguous.
 - Use separators to group related menu items. Avoid long unstructured menus.
