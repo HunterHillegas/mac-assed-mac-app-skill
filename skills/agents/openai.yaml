@@ -1,4 +1,4 @@
 interface:
   display_name: "Mac-Assed Mac App"
-  short_description: "Classic Mac UI rules for app polish"
-  default_prompt: "Use $mac-assed-mac-app to audit and update this macOS UI against classic Mac HIG guidance."
+  short_description: "Native Mac UI behavior, craft, and platform fit"
+  default_prompt: "Use $mac-assed-mac-app to audit and update this macOS UI for Mac-assed platform fit: menus, windows, native behaviors, state, drag and drop, accessibility, and current Mac judgment."

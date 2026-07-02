@@ -7,6 +7,7 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 - Start from the user's existing model of the work. A mail app is messages, mailboxes, recipients, and sending; a photo app is photos, albums, cameras, and edits; a planning app is projects, tasks, deadlines, and progress.
 - Reflect that model in the window layout, navigation, toolbar groups, menu organization, and inspector/panel choices.
 - Keep the core objects visible and selectable. Mac interaction expects the user to choose a noun, then choose a verb.
+- For every visible noun, decide the natural verbs: select, open, reveal, copy, paste, drag, delete, rename, export, inspect, share, and undo.
 - Use domain metaphors when they clarify. Do not force cute metaphors onto tasks where plain structure works better.
 - Make the app's conceptual model teachable from the screen: primary content, visible selection, available commands, and reversible exploration.
 
@@ -26,6 +27,7 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 - Do not hide destructive actions behind hover-only transformations or controls that look like object identity.
 - Keep empty states useful by offering the first real action, not marketing copy.
 - Use standard controls and placements so users can transfer habits from other Mac apps.
+- Use progressive disclosure for depth: simple first-run surfaces, advanced options nearby, and menus/help for the full command map.
 
 ## Direct Manipulation
 
@@ -34,6 +36,7 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 - Show insertion points, target highlighting, invalid-drop feedback, and copy/move semantics during drag and drop.
 - Preserve selection predictably after manipulation.
 - Provide undo for rearranging, moving, deleting, and editing.
+- If users can select an object, make copy, paste, drag, context menus, keyboard navigation, and Delete behave like they do in comparable Mac apps when the model allows it.
 
 ## Feedback and Responsiveness
 
@@ -48,6 +51,7 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 ## Stability and Trust
 
 - Preserve window size, position, sidebar state, visible columns, sort order, and user customization when appropriate.
+- Preserve state that represents user intent, not incidental motion. Remember a workspace layout or expanded inspector; do not remember a temporary alert position dragged aside to read content behind it.
 - Make enabled, disabled, selected, focused, and inactive states visually accurate.
 - Avoid reflowing layouts in ways that make controls jump during ordinary use.
 - Show saved/synced/error states truthfully.
@@ -62,6 +66,7 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 
 - Use the menu bar as the complete command map.
 - Use windows for primary work, panels/inspectors for auxiliary properties, sheets for window-specific modal choices, alerts for important warnings/errors, and preferences/settings for durable choices.
+- Be unafraid of windows. Documents, comparisons, detachable palettes, inspectors, and multi-display workflows may deserve separate windows or tabs instead of being forced into one iPad-like surface.
 - Use sidebars/source lists for sources and collections; use tables/lists/outlines for scannable collections; use detail panes/canvases for selected content.
 - Keep chrome subordinate to user content. The main window should be a working surface, not a launch page.
 - Support keyboard, mouse, trackpad, accessibility, localization, drag and drop, Help, services, printing, and system panels where they fit the app.
@@ -69,9 +74,11 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 - Let the app have a point of view. The goal is not generic system cosplay; the goal is a tool that belongs on the Mac and has a reason to exist.
 - Prefer "good Mac citizen" as a practical test: menus, settings, services, text fields, keyboard behavior, windowing, typography, and symbols should behave like users expect on macOS, regardless of toolkit.
 - For document apps, include document identity, edited state, autosave/versions where relevant, undo, print, reveal/open/export paths, and multi-window behavior in the app shape.
+- For apps with user-owned data, support interchange where sensible: open formats, import/export, pasteboard types, drag in/out, Quick Look/reveal/open flows, and Services.
 - Treat accessibility as part of the shape: VoiceOver containers, keyboard paths, rotors or equivalent navigation, and non-hover alternatives for hidden controls.
 
 ## Older Guidance, Modern Use
 
 - Keep durable principles: mental model, consistency, user control, feedback, direct manipulation, forgiveness, discoverability, and clear text.
 - Treat older Aqua visual treatments as historical unless the user wants a retro UI. Avoid brushed metal, drawer-heavy design, bevel-button-heavy palettes, and purely decorative realism in modern apps.
+- Treat Mac culture as cumulative. Keep behaviors users still rely on, adopt newer system conventions when they improve clarity, and reject imported patterns that reduce Mac-specific power.

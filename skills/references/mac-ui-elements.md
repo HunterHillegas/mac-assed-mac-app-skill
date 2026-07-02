@@ -33,6 +33,9 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Respect active, inactive, key, and main window states.
 - Use full screen when it helps focus on content, not as the only comfortable layout.
 - Avoid palettes of floating windows unless the task needs persistent auxiliary tools.
+- Do not force a sophisticated desktop workflow into one window because the implementation started on iPad, web, or mobile.
+- Support multiple windows for multiple documents, projects, comparisons, or independent workspaces when the model calls for it.
+- Let users detach or separate inspectors, palettes, tabs, or documents when scale, multiple displays, or comparison workflows make that useful.
 
 ## Toolbars
 
@@ -44,6 +47,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Keep icon size, weight, perspective, and metaphor consistent.
 - Keep toolbar commands backed by menu items.
 - Provide toolbar customization when the app has a broad command set and users benefit from tailoring it.
+- Restore toolbar customization, item order, labels/icons choice, and visibility when those choices are supported.
 - Keep toolbar controls visually owned by the app/window chrome. Do not make them look like content-owned controls unless they actually are.
 - Do not make noninteractive toolbar status, titles, or counters look like buttons, including when adopting glass-backed toolbar items.
 - Use prominent toolbar treatment sparingly for state or a truly primary action.
@@ -132,10 +136,23 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Context menus need a visible target when the menu applies to an object other than the selected object.
 - Inactive windows should visually recede; custom colored controls and rows should respect active-window state.
 
+## Selection and Pasteboard
+
+- Use standard selection behavior for lists, tables, outlines, grids, canvases, and custom collections.
+- Support command-click for noncontiguous selection and shift-click for ranges when multi-selection is meaningful.
+- Preserve separate selected, focused, inactive, and context-menu-target states. A right-click on an unselected object should not destroy a meaningful multi-selection unless the command clearly targets only the clicked object.
+- Make Edit menu commands reflect the current selection: Cut, Copy, Paste, Duplicate, Delete, Select All, Find, and related commands should enable only when they make sense.
+- When selected objects are copied, put useful representations on the pasteboard: plain text, rich text, file URLs, image data, URLs, or app-specific types as appropriate.
+- When pasted into another app, the result should be useful. A file selection might paste file names into a text editor and file URLs into a file-aware destination.
+- Let selected objects be dragged out, rearranged, or dropped into compatible places when the model supports it.
+- If custom selection or pasteboard behavior is incomplete, document the gap during review and prefer a system list/table/outline/control where possible.
+
 ## Drag and Drop
 
 - Treat drag and drop as a first-class Mac interaction: import files, reorder lists, move content between panes/windows, and expose valid drop targets where the model supports it.
+- Support dragging in from Finder and other apps, dragging out to Finder or compatible apps, and dragging between windows when the data model supports it.
 - Show source feedback, insertion points, target highlighting, copy/move semantics, and invalid-drop feedback.
+- Support spring-loaded navigation, hover expansion, or equivalent delayed target reveal when users need to drag through hierarchy.
 - Avoid drag-source visuals that can get stuck when a drop completes outside the window or app.
 - In SwiftUI, bridge to AppKit when the available drag APIs do not expose enough session lifecycle to keep source and target state correct.
 
@@ -145,6 +162,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - The app's settings must open from `Settings...` and `Command-,`.
 - Settings should be a real window or panel, not an editor tab, web page, or raw configuration file.
 - Do not hide primary workflow controls in preferences.
+- Do not ship a complex Mac app with no durable customization. Good defaults matter, but power users should be able to shape frequent workflows.
 - Group preferences by user goals, not implementation subsystems.
 - Keep labels concrete and searchable.
 - Apply changes immediately when safe; otherwise make Apply/Revert behavior explicit.

@@ -24,6 +24,7 @@ Use this when a task depends on current macOS behavior, macOS 26+ visual languag
 - Keep scroll edge effects functional. Use them to preserve legibility where floating controls overlap scrollable content; do not stack them or use them as decoration.
 - Prefer current APIs for window structure: split view controllers, sidebar and inspector behaviors, safe areas, layout regions, and titlebar/split item accessories.
 - If older HIG advice conflicts with current macOS visuals, keep the durable behavioral rule and update the appearance only when it preserves clarity.
+- Current Apple guidance is organized across platforms, so Mac-specific audits still need real Mac verification: menu behavior, windowing, selection, text editing, pasteboard, drag and drop, state restoration, and accessibility.
 
 ## Toolbars, Sidebars, and Inspectors
 
