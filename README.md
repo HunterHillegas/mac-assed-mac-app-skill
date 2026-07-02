@@ -6,7 +6,11 @@ The packaged skill lives in [skills/](skills/). Repo-level docs live outside tha
 
 ## What It Means
 
-A Mac-assed Mac app is a phrase from Collin Donnell for an app that is unapologetically a Mac app. It is platform-specific, uses native Mac patterns, and does not try to impress users with custom not-Mac-like UI that often ends up less accessible.
+A Mac-assed Mac app is a phrase from Colin Donnell for an app that is unapologetically a Mac app. It is platform-specific, honors learned Mac behaviors, uses native Mac patterns where they help, and does not try to impress users with custom not-Mac-like UI that often ends up less accessible. Native toolkit pixels are not enough; menus, windows, selection, text, pasteboard, drag and drop, state, accessibility, and user-owned data need to feel right.
+
+## Credits
+
+- [Accidental Tech Podcast](https://atp.fm) for the June 2026 member-special discussion of Mac-assed Mac apps, especially the guidance around native behavior, power-user affordances, state, windows, drag and drop, and evolving Mac culture.
 
 ## Contents
 

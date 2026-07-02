@@ -20,6 +20,8 @@ Additional source notes incorporated here:
 - Being a good platform citizen is not the same thing as using a native toolkit. Native controls and latest APIs help, but the deeper goal is respecting the Mac's learned behaviors.
 - A non-native app can feel more Mac-like than a native app if it honors menus, Settings, Services, text input behavior, keyboard conventions, window behavior, and system integration.
 - A native app can still fail as a Mac app if it breaks those expectations.
+- Treat Mac-assedness as a living culture, not a frozen visual era. The Mac has absorbed good ideas from NeXT, Unix, the web, iOS, iPadOS, and third-party utilities, but the imported idea must become a Mac interaction instead of replacing a stronger Mac convention.
+- Native behavior matters more than native-looking pixels. A control that looks close but misses selection, focus, copy/paste, text editing, drag, accessibility, or state behavior will feel wrong.
 
 ## Good Mac Citizenship
 
@@ -29,9 +31,49 @@ Check platform citizenship before judging visual style:
 - Settings should open from `Settings...` and `Command-,` in a real settings window, not an editor tab or raw configuration file.
 - Services should work from the menu bar and relevant context menus.
 - Text fields should inherit system text behavior: standard editing shortcuts, user key bindings, text replacements, smart punctuation preferences, spelling, focus, selection, and accessibility.
+- Selection should behave like selection elsewhere on the Mac: command-click for noncontiguous items, shift-click for ranges, inactive-window selection states, context menus that target the intended object or selected set, and useful clipboard results.
+- Visible user-owned objects should usually support at least one sensible form of copy, drag, reveal, open, export, or share. If the user naturally asks "can I just drag/copy this?", the answer should often be yes.
 - Icons, symbols, controls, and form elements should look like they belong on current macOS, even when they are custom.
 - The app should use Mac-like typography and density. Custom fonts can be expressive, but the UI should not feel imported from another platform.
 - Being "technically native" is not enough; test the behaviors users learn from other Mac apps.
+
+## Behavioral Depth
+
+Native controls are valuable because they carry decades of hidden behavior. A text field is not just a rectangle that accepts characters; it is selection, key bindings, spelling, substitutions, focus rings, accessibility, undo, contextual menus, Services, drag, and pasteboard behavior.
+
+When a custom or cross-platform control is unavoidable:
+
+- Inventory the native behavior before replacing it. Test the system control and record the selection, keyboard, context-menu, drag, pasteboard, active/inactive, focus, accessibility, disabled, and error states users will expect.
+- Recreate behavior that matters, not only the appearance. If users rely on a hidden behavior in other Mac apps, missing it breaks flow even when the control looks fine.
+- Provide useful pasteboard representations. A selected object might copy as plain text, rich text, a file URL, an image, or an app-specific type depending on where the user pastes it.
+- Let drag and drop participate in the wider system. Support dragging in from Finder and other apps, dragging out to Finder or compatible apps, dragging between windows, and clear invalid-target feedback where the model supports it.
+- Treat modifiers as part of the control contract. Option, Command, Shift, arrow keys, and standard editing shortcuts should do what experienced Mac users expect.
+- Maintain the behavior across OS releases. Custom controls create a long-term obligation to track changes in system behavior.
+
+If the team cannot preserve those behaviors, prefer the standard control or bridge to AppKit.
+
+## Power-User Discovery
+
+Mac apps should reward attention without requiring memorization:
+
+- Use progressive disclosure: a simple default state with deeper options nearby when users need them.
+- Keep advanced affordances discoverable through menus, toolbars, context menus, tooltips, help, or obvious direct manipulation.
+- Preserve meaningful user effort. Remember window layouts, column choices, sidebar widths, toolbar customization, disclosure states, sort order, recent locations, and other choices when they express a durable preference.
+- Do not preserve temporary accidents. A dialog dragged aside for a moment should not reappear in that corner forever.
+- Make likely next actions work. If users can see a file, chapter, image, row, app, message, or layer, ask what should happen when they copy it, drag it, reveal it, press Delete, or use the context menu.
+
+The goal is the recurring Mac feeling that the app anticipated a reasonable action before the user had to ask for it.
+
+## Windows and Workspace
+
+The Mac is a windowing environment. Single-window apps can be excellent, but fear of windows is not a Mac value.
+
+- Document apps should support multiple documents/windows when that matches the model.
+- Professional tools should consider detachable inspectors, palettes, tabs, or secondary windows when users need to build a workspace across displays.
+- Tabbed or single-window defaults are fine when they reduce clutter, but users should be able to break work apart when scale, comparison, or focus calls for it.
+- Save and restore meaningful workspace state. Window placement, detached panels, inspector visibility, toolbar customization, and split positions often represent real user work.
+
+If a sophisticated Mac app could move unchanged to iPadOS or the web, it is probably leaving desktop value unused.
 
 ## Structural Layer vs Expressive Layer
 
@@ -81,6 +123,21 @@ Avoid custom UI when:
 
 Every deviation has a cognitive cost. Pay it back with a visibly better experience.
 
+## Cultural Judgment
+
+Avoid both extremes:
+
+- Do not fossilize the Mac as a 1990s or early-2000s interface. Old Aqua styling, drawers, and historical quirks are not automatically right for current macOS.
+- Do not flatten the Mac into web or iPad conventions because they are easier to ship or currently fashionable.
+
+Use imported patterns only when they fit Mac behavior:
+
+- A web-style link can be right when it clearly means navigation or external reference and has appropriate accessibility and keyboard behavior.
+- A custom canvas can be right when the domain needs it, but selection, copy/paste, undo, drag, zoom, keyboard access, and accessibility still need Mac-grade behavior.
+- A mobile-origin app can be right on the Mac when it adds Mac workspace, menus, keyboard, pointer precision, state restoration, and system integration instead of merely resizing the touch UI.
+
+The test is not origin. The test is whether the pattern makes the Mac app easier, deeper, more predictable, and more respectful of learned behavior.
+
 ## Native Technology Judgment
 
 - Prefer AppKit or SwiftUI with AppKit bridges when deep Mac behavior matters.
@@ -109,6 +166,7 @@ Mac-assed professional apps often earn trust outside the visible UI:
 - They are fast and fluid enough that the interface feels like a local tool, not a remote wrapper.
 - They save through authoritative systems or open formats when possible, so users keep control of their data.
 - They interoperate with adjacent workflows and web UIs instead of trapping work in a private silo.
+- They import, export, copy, paste, drag, reveal, and open user data in common formats when the domain reasonably allows it.
 - They document the tool with the same care as the product UI.
 - They use pricing, licensing, trials, and update policies that respect long-term professional use. This is not a UI rule, but it affects whether the app feels like a durable Mac tool.
 
@@ -190,6 +248,10 @@ Ask these while reviewing a macOS UI:
 - What is the app's own voice?
 - Which custom choices improve clarity or purpose?
 - Which custom choices are merely decorative?
+- Which native behaviors did a custom control replace, and were they preserved?
+- What should happen if the user copies, pastes, drags, multi-selects, reveals, opens, or deletes each visible object?
+- Which user choices should be restored next launch, and which were only temporary?
+- Is the app afraid of windows where multiple documents, inspectors, palettes, or comparison views would help?
 - Where has visual fashion weakened hierarchy?
 - Did a visual change make the user think about something that used to be automatic?
 - Are we copying iOS, copying current Apple visuals, or serving Mac behavior?
@@ -198,5 +260,6 @@ Ask these while reviewing a macOS UI:
 - Would a seasoned Mac user find the behavior natural after the first minute?
 - Would a new user still see what is actionable?
 - Does the app feel made by someone with an opinion, or assembled from defaults?
+- Does the app reward power users without punishing new users?
 - Does it behave like a good Mac citizen in Settings, Services, menus, text fields, and keyboard paths?
 - Does the surrounding product experience, including documentation and data ownership, support long-term trust?

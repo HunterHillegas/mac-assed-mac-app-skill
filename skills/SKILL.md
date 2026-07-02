@@ -17,7 +17,7 @@ Load only what the task needs:
 - [references/mac-ui-principles.md](references/mac-ui-principles.md): mental model, workflow, feedback, trust, and Mac app shape.
 - [references/mac-ui-elements.md](references/mac-ui-elements.md): menus, windows, toolbars, sidebars, panels, dialogs, alerts, and controls.
 - [references/mac-ui-text.md](references/mac-ui-text.md): labels, capitalization, ellipses, punctuation, terminology, and alert copy.
-- [references/mac-assedness.md](references/mac-assedness.md): platform identity, expressive software, custom UI judgment, modern macOS tradeoffs, and examples.
+- [references/mac-assedness.md](references/mac-assedness.md): platform identity, behavioral depth, custom UI judgment, evolving Mac culture, modern macOS tradeoffs, and examples.
 - [references/current-macos-design.md](references/current-macos-design.md): current Apple design-source deltas for macOS 26+, AppKit, Liquid Glass, accessibility, icons, documents, undo, and menu-icon judgment.
 - [references/production-app-examples.md](references/production-app-examples.md): production screenshots that demonstrate Mac-assed structure and identity.
 - [references/source-index.md](references/source-index.md): self-contained map of the derived topics.
@@ -35,9 +35,11 @@ Load only what the task needs:
 ## Design Priorities
 
 - Reflect the user's mental model. Layout, window hierarchy, menus, and labels should match how users already understand the task.
+- Treat Mac-assedness as a living platform culture: current Mac behavior plus durable learned habits, not nostalgia.
 - Keep users in control. Avoid surprise automation, irreversible actions without warning, or app-management chores.
 - Use standard macOS elements correctly before inventing custom UI.
 - Protect structural Mac conventions while allowing personality in the expressive layer: visual language, typography, icons, motion, and carefully bounded custom controls.
+- Reward users for trying natural Mac actions: multi-select, copy, paste, drag, reveal, open, undo, resize, detach, and restore state where the model supports them.
 - Make primary content the focus. Chrome should support scanning and action, not compete with the work.
 - Keep commands discoverable through the menu bar even when toolbar buttons or contextual actions exist.
 - Use feedback for every user-initiated operation. Show progress for long work and explain failures in user language.
@@ -47,14 +49,16 @@ Load only what the task needs:
 
 ## Implementation Biases
 
-- Prefer native SwiftUI/AppKit controls and platform behavior over web-style custom widgets.
+- Prefer native SwiftUI/AppKit controls and platform behavior over web-style custom widgets because they inherit subtle behavior users expect.
 - Prefer sidebars, split views, outline/list/table views, toolbars, inspectors, popovers, sheets, and panels where they match the task.
+- Prefer multiple windows, tabs, detachable palettes, or inspectors when the task benefits from a desktop workspace. Do not force everything into one window by default.
 - Prefer document-modal sheets for document/window-specific decisions. Use app-modal alerts sparingly.
 - Prefer Preferences/Settings for durable user choices; avoid using preferences as a dumping ground for core workflow controls.
+- Prefer meaningful state restoration and customization: window size, sidebar width, disclosure state, toolbar contents, columns, sort order, and save/open locations when those choices express intent.
 - Prefer direct manipulation for visible objects: drag, reorder, resize, select, reveal, and edit in place when it matches the model.
 - Prefer standard menu order, names, and keyboard equivalents. Keep toolbar/context menu commands backed by menu items.
 - Prefer sentence-style explanatory text and title-style command labels, following the text rules in the reference.
-- Prefer custom UI only when it clarifies the app's purpose, improves the interaction, or gives the app a coherent voice without making users relearn Mac basics.
+- Prefer custom UI only when it clarifies the app's purpose, improves the interaction, or gives the app a coherent voice without making users relearn Mac basics. Custom controls must preserve native behavior, accessibility, focus, selection, pasteboard, drag, and keyboard expectations.
 
 ## Do Not
 
@@ -66,6 +70,8 @@ Load only what the task needs:
 - Do not use internal implementation terms, API names, file-system paths, or developer jargon in visible UI unless the app is explicitly for that audience.
 - Do not add branding where it fights native app conventions. Brand through icon craft, tone, layout restraint, and domain-specific detail.
 - Do not confuse being Mac-assed with copying Apple's newest visual style. Serve the platform's learned behaviors first.
+- Do not treat Mac-assedness as visual purity. Useful ideas from the web, iPad, or other desktop cultures can belong on the Mac when adapted to Mac behavior.
+- Do not assume a native toolkit or current Apple look makes an app Mac-assed if menus, windows, selection, text, pasteboard, drag and drop, state, or accessibility feel wrong.
 
 ## Output Shape
 
