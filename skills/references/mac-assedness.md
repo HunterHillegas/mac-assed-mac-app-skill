@@ -28,7 +28,7 @@ Additional source notes incorporated here:
 Check platform citizenship before judging visual style:
 
 - Standard menus should exist in the expected order and contain expected commands.
-- Settings should open from `Settings...` and `Command-,` in a real settings window, not an editor tab or raw configuration file.
+- Settings should open from `Settings…` and `Command-,` in a real settings window, not an editor tab or raw configuration file.
 - Services should work from the menu bar and relevant context menus.
 - Text fields should inherit system text behavior: standard editing shortcuts, user key bindings, text replacements, smart punctuation preferences, spelling, focus, selection, and accessibility.
 - Selection should behave like selection elsewhere on the Mac: command-click for noncontiguous items, shift-click for ranges, inactive-window selection states, context menus that target the intended object or selected set, and useful clipboard results.

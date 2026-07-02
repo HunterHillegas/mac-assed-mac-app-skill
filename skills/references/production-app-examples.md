@@ -4,7 +4,7 @@ Use these screenshots as calibration examples for Mac-assed software. They are n
 
 ## Proxyman
 
-![Proxyman network inspector](images/proxyman.webp)
+![Proxyman network inspector](images/proxyman.png)
 
 Proxyman is a dense professional network-debugging app that still reads as a Mac app:
 

@@ -30,7 +30,8 @@ Load only what the task needs:
 3. For window geometry, settings, toolbar, sidebar, inspector, panel, or dense form work, also read `references/mac-layout-structure.md`.
 4. For labels, alerts, buttons, menu items, settings copy, or help, also read `references/mac-ui-text.md`.
 5. For custom UI, branding, iconography, product personality, or "does this feel Mac-assed?", also read `references/mac-assedness.md` and, when useful, `references/production-app-examples.md`.
-6. Read `references/source-index.md` only for topic routing or attribution questions.
+6. For macOS 26+ visual language, Liquid Glass, current control sizing, menu icons, document/undo architecture, or conflicts between older HIG guidance and current macOS, also read `references/current-macos-design.md`.
+7. Read `references/source-index.md` only for topic routing or attribution questions.
 
 ## Workflow
 

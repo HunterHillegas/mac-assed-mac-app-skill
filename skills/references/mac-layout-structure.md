@@ -37,7 +37,7 @@ Use this for concrete Mac window composition: settings forms, toolbars, sidebars
 
 - Use sidebars for sources, collections, libraries, accounts, folders, scopes, and app-owned containers.
 - A sidebar should normally drive the detail area; it is not a junk drawer for buttons.
-- Start with sensible width limits. Around 225-275 pt minimum and 350-400 pt maximum is a useful range for many Mac sidebars.
+- Start with sensible width limits. Many Mac sidebars default to roughly 150-250 pt wide with a maximum near 350-400 pt; treat these as starting defaults, not hard minimums.
 - Keep sidebar rows scannable: icon, title, count/status only when useful. Put row actions in menus, contextual menus, detail panes, or bottom bars.
 - Sidebar contextual menus should act on the clicked row or selection and make that target obvious.
 - A sidebar bottom bar can hold closely related add/remove/action controls, but keep it sparse.
