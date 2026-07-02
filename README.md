@@ -8,10 +8,6 @@ The packaged skill lives in [skills/](skills/). Repo-level docs live outside tha
 
 A Mac-assed Mac app is a phrase from Collin Donnell for an app that is unapologetically a Mac app. It is platform-specific, honors learned Mac behaviors, uses native Mac patterns where they help, and does not try to impress users with custom not-Mac-like UI that often ends up less accessible. Native toolkit pixels are not enough; menus, windows, selection, text, pasteboard, drag and drop, state, accessibility, and user-owned data need to feel right.
 
-## Credits
-
-- [Accidental Tech Podcast](https://atp.fm) for the June 2026 member-special discussion of Mac-assed Mac apps, especially the guidance around native behavior, power-user affordances, state, windows, drag and drop, and evolving Mac culture.
-
 ## Contents
 
 - [skills/SKILL.md](skills/SKILL.md): skill metadata, trigger description, workflow, and usage rules.
@@ -20,7 +16,8 @@ A Mac-assed Mac app is a phrase from Collin Donnell for an app that is unapologe
 
 ## Credits
 
-Additional structure and calibration were informed by Mario Guzman's [Design Resources for Mac](https://marioaguzman.github.io/design/) and Justin Wetch's [HIGAgentSkills](https://github.com/justinwetch/HIGAgentSkills). This skill remains a separate, macOS-desktop-focused reference package; it does not redistribute their source text.
+- [Accidental Tech Podcast](https://atp.fm) for the June 2026 member-special discussion of Mac-assed Mac apps, especially the guidance around native behavior, power-user affordances, state, windows, drag and drop, and evolving Mac culture.
+- Additional structure and calibration were informed by Mario Guzman's [Design Resources for Mac](https://marioaguzman.github.io/design/) and Justin Wetch's [HIGAgentSkills](https://github.com/justinwetch/HIGAgentSkills). This skill remains a separate, macOS-desktop-focused reference package; it does not redistribute their source text.
 
 ## Scope
 
