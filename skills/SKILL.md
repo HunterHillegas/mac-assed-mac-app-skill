@@ -16,17 +16,27 @@ Load only what the task needs:
 - [references/hig-ui-rules.md](references/hig-ui-rules.md): compact rulebook and common violations.
 - [references/mac-ui-principles.md](references/mac-ui-principles.md): mental model, workflow, feedback, trust, and Mac app shape.
 - [references/mac-ui-elements.md](references/mac-ui-elements.md): menus, windows, toolbars, sidebars, panels, dialogs, alerts, and controls.
+- [references/mac-layout-structure.md](references/mac-layout-structure.md): concrete layout, toolbar, sidebar, inspector, settings, and bottom-bar guidance.
 - [references/mac-ui-text.md](references/mac-ui-text.md): labels, capitalization, ellipses, punctuation, terminology, and alert copy.
 - [references/mac-assedness.md](references/mac-assedness.md): platform identity, behavioral depth, custom UI judgment, evolving Mac culture, modern macOS tradeoffs, and examples.
 - [references/current-macos-design.md](references/current-macos-design.md): current Apple design-source deltas for macOS 26+, AppKit, Liquid Glass, accessibility, icons, documents, undo, and menu-icon judgment.
 - [references/production-app-examples.md](references/production-app-examples.md): production screenshots that demonstrate Mac-assed structure and identity.
 - [references/source-index.md](references/source-index.md): self-contained map of the derived topics.
 
+## Loading Protocol
+
+1. Always read `references/hig-ui-rules.md` plus `references/mac-ui-principles.md`.
+2. For commands, menus, windows, dialogs, alerts, controls, keyboard, or selection, also read `references/mac-ui-elements.md`.
+3. For window geometry, settings, toolbar, sidebar, inspector, panel, or dense form work, also read `references/mac-layout-structure.md`.
+4. For labels, alerts, buttons, menu items, settings copy, or help, also read `references/mac-ui-text.md`.
+5. For custom UI, branding, iconography, product personality, or "does this feel Mac-assed?", also read `references/mac-assedness.md` and, when useful, `references/production-app-examples.md`.
+6. Read `references/source-index.md` only for topic routing or attribution questions.
+
 ## Workflow
 
 1. Inspect the UI before editing: app type, primary documents/content, main windows, menus, toolbars, sidebars, dialogs, preferences, alerts, and keyboard shortcuts.
 2. Identify the user's task model: noun-first objects, core workflows, destructive actions, frequent commands, and novice/expert paths.
-3. Read `references/hig-ui-rules.md` and any task-specific reference. Map only the relevant rules to the current UI.
+3. Follow the loading protocol. Map only the relevant rules to the current UI.
 4. Fix root causes in the app's UI structure before cosmetic polish. Prefer system controls, real macOS affordances, and existing app patterns.
 5. Preserve exact user-provided copy. Otherwise rewrite UI text to be user-centric, concrete, concise, and Mac-style.
 6. Verify with the real app when possible: build, run, inspect menus/windows, use screenshots, exercise keyboard navigation, and check alerts/dialogs.
