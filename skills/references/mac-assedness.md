@@ -9,7 +9,9 @@ Additional source notes incorporated here:
 - Daring Fireball on Nova: https://daringfireball.net/linked/2020/09/24/nova
 - Daring Fireball on Sketch: https://daringfireball.net/2020/11/sketch_mac_app_mac_apps
 - Daring Fireball on Safari 15 tabs: https://daringfireball.net/2021/10/the_tragedy_of_safari_15_quote_unquote_tabs
-- Paulo Andrade on SwiftUI Mac apps: https://pfandrade.me/blog/mac-assed-swiftui-app/
+- Paulo Andrade on SwiftUI Mac apps and the WWDC 27 follow-up:
+  - https://pfandrade.me/blog/mac-assed-swiftui-app/
+  - https://pfandrade.me/blog/swiftui-mac-assed-wwdc27-update/
 
 ## Core Definition
 
@@ -152,11 +154,11 @@ SwiftUI can ship a good Mac app, but pure SwiftUI still needs scrutiny where App
 
 - Selection has layers: active-window selection, inactive-window selection, selected-but-not-focused state, and context-menu target. Users need to see which object is selected and which pane receives keyboard input.
 - System `List` often gets Mac selection and context-menu behavior right because it inherits table behavior. Custom `ScrollView`/`LazyVStack` lists must recreate focus, emphasized selection, inactive-window appearance, and context-menu target feedback deliberately.
-- Read `appearsActive` and equivalent focus/emphasis state when styling custom selected rows. A selected row in an inactive window should not look like the key-window selection.
-- Right-clicking an unselected object should not casually change selection. If the menu applies to the clicked object, show a separate context target affordance.
-- Drag and drop is core Mac behavior. SwiftUI drag APIs may not expose enough drag-session state; avoid UI that can get stuck dimmed or stale after drops outside the window. Bridge to AppKit when source/session feedback matters.
-- Keyboard support must go beyond command shortcuts. Lists need arrow-key navigation; search fields should allow typing while arrowing through results when that matches the task; panes need clear focus behavior.
-- SwiftUI toolbar placement can be too abstract for complex Mac windows. Design one coherent Mac toolbar; do not accept scattered `.toolbar` modifiers if they produce surprising placement or mix sidebar/detail ownership.
+- Read `appearsActive` when styling custom selected rows. For selection emphasis, prefer SwiftUI's `backgroundProminence`: `List`, `Table`, and `ShapeStyle.selection` update it automatically, and custom collections can propagate a focus-derived value through the environment. A selected row in an inactive window or unfocused pane should not look like the key-window, focused selection.
+- Right-clicking an unselected object should not casually change selection. If the menu applies to the clicked object, show a separate context target affordance. SwiftUI still may not expose whether a context menu is open outside system collection behavior; use `List`/`Table`, bridge to AppKit, or document the gap rather than faking selection.
+- Drag and drop is core Mac behavior. When the SDK and deployment target permit, use `.onDragSessionUpdated` to track source-side lifecycle and clean up even after an external drop; use `.reorderable` for straightforward reordering on OS 27+. For older targets or behavior those APIs cannot express, bridge to AppKit rather than leaving dimmed or stale drag state behind.
+- Keyboard support must go beyond command shortcuts. Lists need arrow-key navigation; search fields should allow typing while arrowing through results when that matches the task; panes need clear focus behavior. Prefer intent-level `.onMoveCommand` on macOS. Use `.onKeyPress` only when shared cross-platform code or lower-level key handling justifies losing that semantic intent.
+- SwiftUI toolbar placement can be too abstract for complex Mac windows. Design one coherent Mac toolbar; do not accept scattered `.toolbar` modifiers if they produce surprising placement or mix sidebar/detail ownership. Use `.visibilityPriority` to tune overflow order where available, not as a substitute for coherent placement and ownership.
 - Reuse across iOS, iPadOS, and macOS is valuable, but not when it erases Mac-only behaviors. Fork or bridge platform-specific interaction where needed.
 
 ## Professional Tool Trust

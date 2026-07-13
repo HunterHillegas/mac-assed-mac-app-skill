@@ -17,6 +17,7 @@ A Mac-assed Mac app is a phrase from Collin Donnell for an app that is unapologe
 ## Credits
 
 - [Accidental Tech Podcast](https://atp.fm) for the June 2026 member-special discussion of Mac-assed Mac apps, especially the guidance around native behavior, power-user affordances, state, windows, drag and drop, and evolving Mac culture.
+- Paulo Andrade's [Using SwiftUI to Build a Mac-assed App in 2026](https://pfandrade.me/blog/mac-assed-swiftui-app/) and [A WWDC 27 Update on Building a Mac-assed App with SwiftUI](https://pfandrade.me/blog/swiftui-mac-assed-wwdc27-update/) for concrete SwiftUI guidance on selection prominence, context-menu targeting, drag-session lifecycle, keyboard intent, and toolbar limitations.
 - Additional structure and calibration were informed by Mario Guzman's [Design Resources for Mac](https://marioaguzman.github.io/design/) and Justin Wetch's [HIGAgentSkills](https://github.com/justinwetch/HIGAgentSkills). This skill remains a separate, macOS-desktop-focused reference package; it does not redistribute their source text.
 
 ## Scope
