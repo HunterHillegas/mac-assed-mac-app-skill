@@ -9,9 +9,9 @@ Additional source notes incorporated here:
 - Daring Fireball on Nova: https://daringfireball.net/linked/2020/09/24/nova
 - Daring Fireball on Sketch: https://daringfireball.net/2020/11/sketch_mac_app_mac_apps
 - Daring Fireball on Safari 15 tabs: https://daringfireball.net/2021/10/the_tragedy_of_safari_15_quote_unquote_tabs
-- Paulo Andrade on SwiftUI Mac apps and the WWDC 27 follow-up:
+- Paulo Andrade on SwiftUI Mac apps and the WWDC 26 follow-up:
   - https://pfandrade.me/blog/mac-assed-swiftui-app/
-  - https://pfandrade.me/blog/swiftui-mac-assed-wwdc27-update/
+  - https://pfandrade.me/blog/swiftui-mac-assed-wwdc26-update/
 
 ## Core Definition
 
