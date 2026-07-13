@@ -51,6 +51,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Do not make noninteractive toolbar status, titles, or counters look like buttons, including when adopting glass-backed toolbar items.
 - Use prominent toolbar treatment sparingly for state or a truly primary action.
 - In SwiftUI, audit final toolbar placement in the running app. Semantic placements and distributed `.toolbar` modifiers can produce toolbars that do not match the intended Mac hierarchy.
+- Where available, use `.visibilityPriority` to control which SwiftUI toolbar items enter overflow first. It does not fix poor grouping, placement, or ownership.
 
 ## Tabs and Multi-Document Metaphors
 
@@ -72,6 +73,8 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Preserve sidebar selection and expansion where useful.
 - Preserve nuanced selection styling: key-window selection, inactive-window selection, selected-but-not-focused rows, and context-menu target feedback are distinct states.
 - Prefer system `List`, table, or outline behavior when it gives correct Mac selection and context-menu affordances for free. Recreate those details before replacing it with a fully custom stack.
+- In SwiftUI, read `appearsActive` for active-window styling and `backgroundProminence` for selection emphasis. For a custom collection, derive prominence from focus and pass it through the environment so unfocused selection remains visible but subdued.
+- Do not pretend context-menu targeting is selection. If SwiftUI cannot expose the open-menu target for a custom collection, use a system collection, bridge to AppKit, or record the limitation.
 
 ## Inspectors and Panels
 
@@ -153,7 +156,8 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Show source feedback, insertion points, target highlighting, copy/move semantics, and invalid-drop feedback.
 - Support spring-loaded navigation, hover expansion, or equivalent delayed target reveal when users need to drag through hierarchy.
 - Avoid drag-source visuals that can get stuck when a drop completes outside the window or app.
-- In SwiftUI, bridge to AppKit when the available drag APIs do not expose enough session lifecycle to keep source and target state correct.
+- In SwiftUI, use `.onDragSessionUpdated` when available to observe source-side start, updates, and completion, including drops outside the view. Bridge to AppKit when the deployment target or available API cannot keep source and target state correct.
+- Prefer `.reorderable` for straightforward reordering on OS 27+; use lower-level drag/drop behavior when the task needs richer transfer or destination semantics.
 
 ## Preferences and Settings
 
