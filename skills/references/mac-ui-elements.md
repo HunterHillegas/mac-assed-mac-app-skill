@@ -13,6 +13,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Use toggled menu items for persistent state. Make state text clear.
 - Use contextual menus only for commands that make sense on the clicked object or selection.
 - Keep Dock menu items useful for app-level quick actions and recent/common states.
+- Route commands to the intended window and focused editing context. A text field's Copy or Delete must not act on an unrelated sidebar selection. Keep menu, toolbar, and shortcut availability consistent.
 
 ## Keyboard Shortcuts
 
@@ -23,19 +24,21 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Provide keyboard navigation and selection for list/table/outline/detail workflows.
 - Arrow keys should move the active list/table/outline selection when that pane has focus.
 - Search fields in command/search workflows should not trap all keyboard behavior if users need arrow keys to move through results while keeping the query focused.
+- Preserve native text editing and input-method composition. Scope custom navigation to its owning pane or search interaction; do not consume arrow keys globally.
 
 ## Windows
 
 - Use primary windows for the main work. Document-based apps should make the document/content identity clear.
 - Make windows resizable unless content is inherently fixed.
 - Preserve user window placement and size when it helps continuity.
-- Keep titles user-facing. Do not show raw paths as titles.
+- Keep titles user-facing and identify the content. Use standard path/document affordances when location matters or file names are ambiguous.
 - Respect active, inactive, key, and main window states.
 - Use full screen when it helps focus on content, not as the only comfortable layout.
 - Avoid palettes of floating windows unless the task needs persistent auxiliary tools.
 - Do not force a sophisticated desktop workflow into one window because the implementation started on iPad, web, or mobile.
 - Support multiple windows for multiple documents, projects, comparisons, or independent workspaces when the model calls for it.
 - Let users detach or separate inspectors, palettes, tabs, or documents when scale, multiple displays, or comparison workflows make that useful.
+- Distinguish closing a window from quitting the app. Provide sensible reopen/new-window behavior for the app type, and keep restored windows reachable when display arrangements change.
 
 ## Toolbars
 
@@ -50,8 +53,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Keep toolbar controls visually owned by the app/window chrome. Do not make them look like content-owned controls unless they actually are.
 - Do not make noninteractive toolbar status, titles, or counters look like buttons, including when adopting glass-backed toolbar items.
 - Use prominent toolbar treatment sparingly for state or a truly primary action.
-- In SwiftUI, audit final toolbar placement in the running app. Semantic placements and distributed `.toolbar` modifiers can produce toolbars that do not match the intended Mac hierarchy.
-- Where available, use `.visibilityPriority` to control which SwiftUI toolbar items enter overflow first. It does not fix poor grouping, placement, or ownership.
+- In SwiftUI, verify placement and overflow in the running app; see [swiftui-mac-behavior.md](swiftui-mac-behavior.md) for implementation and availability guidance.
 
 ## Tabs and Multi-Document Metaphors
 
@@ -73,13 +75,14 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Preserve sidebar selection and expansion where useful.
 - Preserve nuanced selection styling: key-window selection, inactive-window selection, selected-but-not-focused rows, and context-menu target feedback are distinct states.
 - Prefer system `List`, table, or outline behavior when it gives correct Mac selection and context-menu affordances for free. Recreate those details before replacing it with a fully custom stack.
-- In SwiftUI, read `appearsActive` for active-window styling and `backgroundProminence` for selection emphasis. For a custom collection, derive prominence from focus and pass it through the environment so unfocused selection remains visible but subdued.
-- Do not pretend context-menu targeting is selection. If SwiftUI cannot expose the open-menu target for a custom collection, use a system collection, bridge to AppKit, or record the limitation.
+- Keep selection and context-menu targeting distinct where the system control does. For SwiftUI implementation, see [swiftui-mac-behavior.md](swiftui-mac-behavior.md).
 
 ## Inspectors and Panels
 
 - Use inspectors for properties of the current selection.
 - Keep inspectors modeless and selection-aware.
+- Show meaningful empty and multiple-selection states, including mixed property values. Editing a mixed value should apply predictably to the indicated selection.
+- Keep the inspected target stable while users edit inspector fields; moving keyboard focus into the inspector must not discard the selection it describes.
 - Use panels for auxiliary controls users may need while working.
 - Do not use a panel when a popover, sidebar, or inline editor is simpler.
 - Avoid drawers in modern apps; use sidebars, inspectors, popovers, split views, or panels instead.
@@ -113,7 +116,7 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 ## Controls
 
 - Push button: immediate command.
-- Icon button: command where the icon is obvious or labeled by tooltip/accessibility.
+- Icon button: command with a recognizable symbol and an accessible name. Add a visible label when users cannot infer the action; a tooltip alone does not make an unfamiliar icon discoverable.
 - Do not turn an icon that represents an object into a destructive command for that object on hover.
 - Add menu or toolbar icons when they speed recognition of object types, destinations, spatial layouts, devices, apps, media, or key scanned actions. Skip them when they merely restate text or add alignment noise.
 - Checkbox: independent on/off option.
@@ -142,12 +145,13 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 
 - Use standard selection behavior for lists, tables, outlines, grids, canvases, and custom collections.
 - Support command-click for noncontiguous selection and shift-click for ranges when multi-selection is meaningful.
-- Preserve separate selected, focused, inactive, and context-menu-target states. A right-click on an unselected object should not destroy a meaningful multi-selection unless the command clearly targets only the clicked object.
+- Preserve separate selected, focused, inactive, and context-menu-target states. A context menu on a selected item should respect the selected set where appropriate; on an unselected item, make the clicked target clear. Follow the native collection's selection behavior and avoid surprising target changes.
 - Make Edit menu commands reflect the current selection: Cut, Copy, Paste, Duplicate, Delete, Select All, Find, and related commands should enable only when they make sense.
 - When selected objects are copied, put useful representations on the pasteboard: plain text, rich text, file URLs, image data, URLs, or app-specific types as appropriate.
 - When pasted into another app, the result should be useful. A file selection might paste file names into a text editor and file URLs into a file-aware destination.
 - Let selected objects be dragged out, rearranged, or dropped into compatible places when the model supports it.
 - If custom selection or pasteboard behavior is incomplete, document the gap during review and prefer a system list/table/outline/control where possible.
+- Preserve selected objects by stable identity through sorting and refresh where possible. After deletion or filtering, choose a predictable remaining selection or an explicit empty state; do not silently retarget an edit.
 
 ## Drag and Drop
 
@@ -156,8 +160,8 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - Show source feedback, insertion points, target highlighting, copy/move semantics, and invalid-drop feedback.
 - Support spring-loaded navigation, hover expansion, or equivalent delayed target reveal when users need to drag through hierarchy.
 - Avoid drag-source visuals that can get stuck when a drop completes outside the window or app.
-- In SwiftUI, use `.onDragSessionUpdated` when available to observe source-side start, updates, and completion, including drops outside the view. Bridge to AppKit when the deployment target or available API cannot keep source and target state correct.
-- Prefer `.reorderable` for straightforward reordering on OS 27+; use lower-level drag/drop behavior when the task needs richer transfer or destination semantics.
+- Clear source and target feedback after accepted, rejected, cancelled, and external drops. Commit moves only after a successful transfer; failed drops must preserve the source.
+- For SwiftUI drag lifecycle and reordering APIs, use [swiftui-mac-behavior.md](swiftui-mac-behavior.md) and verify the supported SDK/OS.
 
 ## Preferences and Settings
 
@@ -165,10 +169,11 @@ Self-contained macOS UI element rules derived from Mac OS X / OS X HIG material.
 - The app's settings must open from `Settings…` and `Command-,`. On modern macOS the app-menu item is named `Settings…`; `Preferences…` is the historical name.
 - Settings should be a real window or panel, not an editor tab, web page, or raw configuration file.
 - Do not hide primary workflow controls in preferences.
-- Do not ship a complex Mac app with no durable customization. Good defaults matter, but power users should be able to shape frequent workflows.
+- Offer durable customization when users benefit from shaping frequent workflows. Do not invent settings for choices a single-purpose app can resolve with good defaults.
 - Group preferences by user goals, not implementation subsystems.
 - Keep labels concrete and searchable.
 - Apply changes immediately when safe; otherwise make Apply/Revert behavior explicit.
+- Reuse or focus the existing settings window when reopened. Preserve its useful state and distinguish app-wide settings from document-specific options.
 
 ## Services and System Text Behavior
 

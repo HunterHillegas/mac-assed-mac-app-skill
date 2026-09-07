@@ -1,94 +1,57 @@
 ---
 name: mac-assed-mac-app
-description: "macOS app UI guidance distilled from historical Apple Human Interface Guidelines and Mac-assed design analysis. Use when designing, auditing, reviewing, or updating SwiftUI, AppKit, Catalyst, or other desktop Mac app interfaces to feel like a proper Mac app: menus, windows, panels, dialogs, controls, labels, keyboard shortcuts, icons, preferences, help, drag and drop, feedback, platform conventions, expressive identity, and tasteful custom UI. Ignore iOS-only advice."
+description: "Design, audit, and improve desktop macOS app UI: menus, windows, keyboard and selection behavior, native controls, UI text, and expressive identity. Use for AppKit, SwiftUI-on-Mac, Catalyst, or other Mac app surfaces; excludes iOS-only and web-only UI work."
 ---
 
 # Mac-Assed Mac App
 
 ## Purpose
 
-Use this skill to make macOS app interfaces feel native, intentional, and Mac-like. The bundled references are self-contained derived guidance; do not require or look for the original source documents.
+Make desktop macOS interfaces feel at home on the Mac: menus, windows, keyboard, selection, and hierarchy first; typography, iconography, motion, and custom controls second. Native-looking pixels do not prove native behavior.
 
-## References
+Stay within the requested surface and mode. An audit produces findings; an implementation request authorizes relevant edits. Preserve the user's toolkit, deployment target, product intent, and exact supplied copy unless changing them is part of the request. A small label fix does not require redesigning the app.
 
-Load only what the task needs:
+## Reference Routing
 
-- [references/hig-ui-rules.md](references/hig-ui-rules.md): compact rulebook and common violations.
-- [references/mac-ui-principles.md](references/mac-ui-principles.md): mental model, workflow, feedback, trust, and Mac app shape.
-- [references/mac-ui-elements.md](references/mac-ui-elements.md): menus, windows, toolbars, sidebars, panels, dialogs, alerts, and controls.
-- [references/mac-layout-structure.md](references/mac-layout-structure.md): concrete layout, toolbar, sidebar, inspector, settings, and bottom-bar guidance.
-- [references/mac-ui-text.md](references/mac-ui-text.md): labels, capitalization, ellipses, punctuation, terminology, and alert copy.
-- [references/mac-assedness.md](references/mac-assedness.md): platform identity, behavioral depth, custom UI judgment, evolving Mac culture, modern macOS tradeoffs, and examples.
-- [references/current-macos-design.md](references/current-macos-design.md): current Apple design-source deltas for macOS 26+, AppKit, Liquid Glass, accessibility, icons, documents, undo, and menu-icon judgment.
-- [references/production-app-examples.md](references/production-app-examples.md): production screenshots that demonstrate Mac-assed structure and identity.
-- [references/source-index.md](references/source-index.md): self-contained map of the derived topics.
+Read the references that match the task; there is no mandatory bundle. For a broad audit, start with the rulebook and add depth where evidence warrants it. The bundled guidance is self-contained; original source documents are not a prerequisite.
 
-## Loading Protocol
+| Task | Read |
+| --- | --- |
+| Broad audit or common Mac violations | [hig-ui-rules.md](references/hig-ui-rules.md) |
+| App shape, task model, workflow, user control | [mac-ui-principles.md](references/mac-ui-principles.md) |
+| Menus, commands, windows, controls, selection, drag, Services | [mac-ui-elements.md](references/mac-ui-elements.md) |
+| Geometry, toolbar, sidebar, inspector, panel, preferences/settings, dense forms | [mac-layout-structure.md](references/mac-layout-structure.md) |
+| Labels, capitalization, ellipses, alerts, buttons, menu or help copy | [mac-ui-text.md](references/mac-ui-text.md) |
+| Branding, custom controls, iconography, personality, “does this feel Mac-assed?” | [mac-assedness.md](references/mac-assedness.md) |
+| SwiftUI focus, selection, context menus, drag lifecycle, keyboard handling, toolbar overflow | [swiftui-mac-behavior.md](references/swiftui-mac-behavior.md) |
+| Liquid Glass, OS-specific visuals, accessibility, document/undo architecture, historical conflicts | [current-macos-design.md](references/current-macos-design.md) |
+| Visual calibration using production examples | [production-app-examples.md](references/production-app-examples.md) |
+| Runtime checks and audit evidence | [mac-ui-verification.md](references/mac-ui-verification.md) |
+| Topic coverage or attribution | [source-index.md](references/source-index.md) |
 
-1. Always read `references/hig-ui-rules.md` plus `references/mac-ui-principles.md`.
-2. For commands, menus, windows, dialogs, alerts, controls, keyboard, or selection, also read `references/mac-ui-elements.md`.
-3. For window geometry, settings, toolbar, sidebar, inspector, panel, or dense form work, also read `references/mac-layout-structure.md`.
-4. For labels, alerts, buttons, menu items, settings copy, or help, also read `references/mac-ui-text.md`.
-5. For custom UI, branding, iconography, product personality, or "does this feel Mac-assed?", also read `references/mac-assedness.md` and, when useful, `references/production-app-examples.md`.
-6. For macOS 26+ visual language, Liquid Glass, current control sizing, menu icons, document/undo architecture, or conflicts between older HIG guidance and current macOS, also read `references/current-macos-design.md`.
-7. Read `references/source-index.md` only for topic routing or attribution questions.
+## Resolve Conflicts
+
+- Check the app's supported macOS versions and SDK before prescribing an API or visual treatment. Verify availability in the installed SDK or current Apple documentation; a recent article or an OS version alone is not sufficient.
+- Current Mac-specific Apple documentation and observed behavior on the supported OS guide implementation. Historical HIG material supplies durable principles, not current pixel metrics or API guarantees.
+- Treat third-party critiques and this skill's taste judgments as recommendations. Explain a departure from current Apple styling through a concrete gain in legibility, behavior, or task fit.
+- When only screenshots or source code are available, distinguish visible findings and likely risks from behavior that remains untested.
 
 ## Workflow
 
-1. Inspect the UI before editing: app type, primary documents/content, main windows, menus, toolbars, sidebars, dialogs, preferences, alerts, and keyboard shortcuts.
-2. Identify the user's task model: noun-first objects, core workflows, destructive actions, frequent commands, and novice/expert paths.
-3. Follow the loading protocol. Map only the relevant rules to the current UI.
-4. Fix root causes in the app's UI structure before cosmetic polish. Prefer system controls, real macOS affordances, and existing app patterns.
-5. Preserve exact user-provided copy. Otherwise rewrite UI text to be user-centric, concrete, concise, and Mac-style.
-6. Verify with the real app when possible: build, run, inspect menus/windows, use screenshots, exercise keyboard navigation, and check alerts/dialogs.
-7. Report changes as UI behavior and platform fit, not as generic visual cleanup.
+1. Inspect the relevant UI, code, or supplied images. Establish the app type, content model, affected windows/panes, and supported OS versions from available evidence.
+2. Trace the user's task: object → selection/focus → command → result → recovery. Identify which pane or window owns each action.
+3. Load the relevant references. Prioritize broken behavior, inaccessible actions, and unclear ownership before cosmetic polish.
+4. For requested edits, make the smallest coherent improvement. Prefer system behavior and existing app patterns; use custom UI where its benefit justifies maintaining the native interaction contract.
+5. Verify the changed surface with the real app when available. Choose relevant checks from [mac-ui-verification.md](references/mac-ui-verification.md); a build or screenshot alone cannot validate keyboard, drag, or accessibility behavior.
+6. Report concrete changes or prioritized findings, their user impact, and verification limits. Scale the response to the task; do not pad a copy edit with an app-wide audit.
 
 ## Design Priorities
 
-- Reflect the user's mental model. Layout, window hierarchy, menus, and labels should match how users already understand the task.
-- Treat Mac-assedness as a living platform culture: current Mac behavior plus durable learned habits, not nostalgia.
-- Keep users in control. Avoid surprise automation, irreversible actions without warning, or app-management chores.
-- Use standard macOS elements correctly before inventing custom UI.
-- Protect structural Mac conventions while allowing personality in the expressive layer: visual language, typography, icons, motion, and carefully bounded custom controls.
-- Reward users for trying natural Mac actions: multi-select, copy, paste, drag, reveal, open, undo, resize, detach, and restore state where the model supports them.
-- Make primary content the focus. Chrome should support scanning and action, not compete with the work.
-- Keep commands discoverable through the menu bar even when toolbar buttons or contextual actions exist.
-- Use feedback for every user-initiated operation. Show progress for long work and explain failures in user language.
-- Make exploration safe: undo where possible, cancel where sensible, confirmation only for meaningful risk.
-- Support both mouse/trackpad and keyboard use. Add shortcuts for frequent commands, not every command.
-- Treat accessibility, localization, help, printing, drag and drop, and preferences as normal Mac app surfaces, not extras.
-
-## Implementation Biases
-
-- Prefer native SwiftUI/AppKit controls and platform behavior over web-style custom widgets because they inherit subtle behavior users expect.
-- Prefer sidebars, split views, outline/list/table views, toolbars, inspectors, popovers, sheets, and panels where they match the task.
-- Prefer multiple windows, tabs, detachable palettes, or inspectors when the task benefits from a desktop workspace. Do not force everything into one window by default.
-- Prefer document-modal sheets for document/window-specific decisions. Use app-modal alerts sparingly.
-- Prefer Preferences/Settings for durable user choices; avoid using preferences as a dumping ground for core workflow controls.
-- Prefer meaningful state restoration and customization: window size, sidebar width, disclosure state, toolbar contents, columns, sort order, and save/open locations when those choices express intent.
-- Prefer direct manipulation for visible objects: drag, reorder, resize, select, reveal, and edit in place when it matches the model.
-- Prefer standard menu order, names, and keyboard equivalents. Keep toolbar/context menu commands backed by menu items.
-- Prefer sentence-style explanatory text and title-style command labels, following the text rules in the reference.
-- Prefer custom UI only when it clarifies the app's purpose, improves the interaction, or gives the app a coherent voice without making users relearn Mac basics. Custom controls must preserve native behavior, accessibility, focus, selection, pasteboard, drag, and keyboard expectations.
-
-## Do Not
-
-- Do not import iOS patterns just because the code is SwiftUI. A Mac app still needs menus, keyboard navigation, window behavior, resizing, and pointer-friendly density.
-- Do not hide essential commands only in icons, gestures, hover states, contextual menus, or empty states.
-- Do not use custom controls when a standard control exists and expresses the behavior.
-- Do not make alerts do ordinary workflow. Reserve them for errors, confirmation, and important state.
-- Do not use three periods for command ellipses; use the U+2026 ellipsis character when an action needs more input before it can execute.
-- Do not use internal implementation terms, API names, file-system paths, or developer jargon in visible UI unless the app is explicitly for that audience.
-- Do not add branding where it fights native app conventions. Brand through icon craft, tone, layout restraint, and domain-specific detail.
-- Do not confuse being Mac-assed with copying Apple's newest visual style. Serve the platform's learned behaviors first.
-- Do not treat Mac-assedness as visual purity. Useful ideas from the web, iPad, or other desktop cultures can belong on the Mac when adapted to Mac behavior.
-- Do not assume a native toolkit or current Apple look makes an app Mac-assed if menus, windows, selection, text, pasteboard, drag and drop, state, or accessibility feel wrong.
-
-## Output Shape
-
-When auditing or updating a UI, return:
-
-- Key mismatches with macOS conventions.
-- Concrete UI changes made or recommended.
-- Any tradeoffs where older HIG guidance conflicts with modern macOS behavior.
-- Verification performed, or what blocked verification.
+- Keep content and its hierarchy primary. Sidebars navigate; inspectors describe selection; toolbars expose frequent window commands; menus provide the command map.
+- Route commands to the intended window, pane, selection, or text editor. Share command semantics across toolbar, menu, shortcut, and contextual paths; derive each path's target and availability from its actual context.
+- Reward natural Mac actions: multi-select, copy, paste, drag, reveal, open, undo, resize, and restore meaningful state where the model supports them.
+- Keep keyboard, pointer, text editing, accessibility, and localization intact. Avoid essential actions available only through hover, gestures, or unlabeled icons.
+- Make exploration recoverable: undo for edits, cancel for interruptible work, confirmation for meaningful risk. A visible result is often sufficient feedback; routine actions do not each need a toast or alert.
+- Allow personality through typography, icons, color, motion, and justified custom controls without obscuring focus, selection, hierarchy, or actionability.
+- Add windows, customization, system integration, and settings where the task benefits. A menu bar utility, document editor, and single-purpose app need different amounts of UI.
+- Use concrete user-facing language. File names and locations belong where users need to identify their work; internal diagnostics belong only where actionable. Follow the text reference for capitalization and command ellipses.

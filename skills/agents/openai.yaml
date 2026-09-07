@@ -1,4 +1,4 @@
 interface:
   display_name: "Mac-Assed Mac App"
   short_description: "Native Mac UI behavior, craft, and platform fit"
-  default_prompt: "Use $mac-assed-mac-app to audit and update this macOS UI for Mac-assed platform fit: menus, windows, native behaviors, state, drag and drop, accessibility, and current Mac judgment."
+  default_prompt: "Use $mac-assed-mac-app to review this desktop macOS UI and recommend concrete improvements to its native behavior, hierarchy, and expressive identity."

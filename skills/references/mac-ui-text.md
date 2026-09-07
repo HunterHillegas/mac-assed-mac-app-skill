@@ -12,6 +12,8 @@ Self-contained text, label, and command guidance derived from Mac OS X / OS X HI
 
 ## Capitalization
 
+These conventions describe English UI. Preserve established product terminology and use the target locale's capitalization and punctuation rules for translations.
+
 - Use title-style capitalization for:
   - Menu titles
   - Menu items
@@ -31,11 +33,14 @@ Self-contained text, label, and command guidance derived from Mac OS X / OS X HI
 ## Ellipses
 
 - Use the single ellipsis character `…`, not three periods.
-- Add an ellipsis to a command or button when the user must provide more information before the action executes.
-- Good ellipsis examples: `Open…`, `Save As…`, `Export…`, `Find…`, `Print…`, `Settings…`, `Customize Toolbar…`.
+- For menu commands, add an ellipsis when further information is required to complete the action: `Open…`, `Save As…`, `Export…`, `Print…`.
+- Preserve platform-standard labels such as `Settings…`. Do not infer punctuation solely from a verb: a `Find` action that focuses an existing search field differs from a command that opens a search dialog requiring input.
+- Current macOS push-button guidance also uses ellipses for buttons that open another window, view, or app where people can provide input, such as an `Edit…` button in Settings. Check the actual control and destination instead of applying a menu example blindly.
 - Do not add an ellipsis when the action executes immediately.
 - Do not add an ellipsis just because an alert might appear in some cases.
-- Do not add an ellipsis for commands that simply show a panel or inspector: `Get Info`, `Show Inspector`, `Show Fonts`, `Show Colors`.
+- For menu commands that simply show a panel or inspector, preserve standard labels such as `Get Info`, `Show Inspector`, `Show Fonts`, and `Show Colors`.
+
+Sources: [Apple menu labels](https://developer.apple.com/design/human-interface-guidelines/menus), [macOS push buttons](https://developer.apple.com/design/human-interface-guidelines/buttons).
 
 ## Colons
 
@@ -48,7 +53,7 @@ Self-contained text, label, and command guidance derived from Mac OS X / OS X HI
 - Use action verbs.
 - Use consequence-specific labels for destructive or risky actions.
 - Prefer `Delete`, `Remove`, `Replace`, `Discard Changes`, `Keep Both`, `Cancel` over `OK`, `Yes`, `No`, `Submit`.
-- Match dialog titles to the command that opened them, minus the ellipsis.
+- When a task dialog needs a title, match the command that opened it, minus its ellipsis. Alert titles instead describe the situation; do not replace an informative warning with a bare command name.
 - Keep default buttons safe. Do not make a destructive action the default unless the user has clearly chosen that path and the label is explicit.
 
 ## Menu Labels
@@ -64,7 +69,7 @@ Self-contained text, label, and command guidance derived from Mac OS X / OS X HI
 
 - Label every non-obvious control.
 - Put labels close to their controls.
-- Avoid raw paths, IDs, UUIDs, API names, exception names, and database names in normal UI.
+- Avoid internal IDs, API names, exception names, and database terms unless useful to the audience. Show user file names and locations when needed to identify, reveal, or recover work; a path is not inherently developer jargon.
 - Placeholder text is a hint, not a label. Do not rely on placeholder text as the only field description.
 - Avoid restating the group/window title in each label.
 - Leave room for localization; expect labels to expand.
@@ -83,7 +88,7 @@ Self-contained text, label, and command guidance derived from Mac OS X / OS X HI
 
 - Use Help menu entries for searchable user help.
 - Use tooltips/help tags for controls whose purpose is not obvious from label/icon.
-- Accessibility labels should name the control and its state/action, not describe visual appearance.
+- Accessibility labels should name purpose or action. Expose role, value, and selected/mixed state through native semantics or separate accessibility properties; do not duplicate the role or mutable state in a label the system already announces.
 - Help text should answer task questions: what this does, when to use it, what happens next.
 - For complex Mac windows, accessibility grouping should match how a user navigates: toolbar, sidebar, content, inspector, table, selected item, and detail.
 - Hover-only controls need another named path through visible UI, menus, context menus, or accessibility actions.

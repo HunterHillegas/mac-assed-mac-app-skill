@@ -35,7 +35,9 @@ Keep the skill package concise:
 - Reference files should remain one level below `SKILL.md`.
 - Do not put README, install guides, changelogs, source PDFs, extraction notes, or local source paths inside `skills/`.
 - If `SKILL.md` changes, review `skills/agents/openai.yaml` for stale display text.
-- Core rules are intentionally repeated across reference files so partially loaded references stand alone. When editing a rule, grep for its other statements so the copies do not drift.
+- Keep detailed rules and API advice in their owning reference; other files can summarize the principle and link to it. When editing a shared rule, search for other statements so they do not drift.
+- Route narrow tasks directly to the relevant reference. Use the rulebook for broad audits; do not make every task load the whole package.
+- Distinguish historical calibration, current Apple guidance, editorial judgment, and verified app behavior. Confirm version-sensitive API claims against the target SDK or official documentation.
 
 Useful local checks:
 
@@ -48,7 +50,7 @@ git diff --check
 If a Codex skill validator is available, find it and run it against the package:
 
 ~~~sh
-find ~/.codex -name quick_validate.py -type f
+rg --files --hidden ~/.codex/skills ~/.agents/skills -g quick_validate.py
 python3 <path-to-quick_validate.py> skills
 ~~~
 
@@ -133,35 +135,25 @@ Reference: [Claude Code Skills](https://docs.claude.com/en/docs/claude-code/skil
 
 ### Cursor
 
-Cursor does not discover `SKILL.md` folders as Skills. Use a Cursor Rule that points the agent at this package.
+Cursor supports `SKILL.md` packages in `.cursor/skills/` for a project or `~/.cursor/skills/` for personal use. See [Cursor Agent Skills](https://cursor.com/docs/skills).
 
-#### Project Rule
+#### Project Skill
 
-In the target repo, copy the package into `.cursor/rules/` and add an `.mdc` rule:
+From the target repo, copy the package into the project skill directory:
 
 ~~~sh
-mkdir -p .cursor/rules/mac-assed-mac-app
-cp -R ~/Development/OSS/mac-assed-mac-app-skill/skills/. .cursor/rules/mac-assed-mac-app/
+mkdir -p .cursor/skills/mac-assed-mac-app
+cp -R ~/Development/OSS/mac-assed-mac-app-skill/skills/. .cursor/skills/mac-assed-mac-app/
 ~~~
 
-Create `.cursor/rules/mac-assed-mac-app.mdc`:
+#### Personal Skill
 
-~~~md
----
-description: Use when designing, auditing, reviewing, or updating desktop macOS app UI.
-alwaysApply: false
----
-
-Use the Mac-Assed Mac App skill package for desktop macOS UI work.
-
-Start by reading `.cursor/rules/mac-assed-mac-app/SKILL.md`.
-Load referenced files from `.cursor/rules/mac-assed-mac-app/references/` only as needed.
-Keep guidance scoped to desktop Mac apps, not iOS, web, or generic product design.
+~~~sh
+mkdir -p ~/.cursor/skills/mac-assed-mac-app
+cp -R skills/. ~/.cursor/skills/mac-assed-mac-app/
 ~~~
 
-For a global Cursor setup, add a User Rule in Cursor Settings > Rules with the same instruction, pointing at this repo path if Cursor can read it. Project Rules are more reliable because the reference files live inside the target repo.
-
-Reference: [Cursor Rules](https://docs.cursor.com/context/rules).
+Run the personal-copy commands from this repo. Keep the reference files with `SKILL.md`; a rule that only duplicates the entrypoint loses the bundled guidance.
 
 ## License
 

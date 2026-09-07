@@ -1,18 +1,20 @@
 # Mac Layout Structure
 
-Use this for concrete Mac window composition: settings forms, toolbars, sidebars, inspectors, and bottom bars. Keep it subordinate to the app's task model; metrics are starting points, not magic.
+Use this for concrete Mac window composition: settings forms, toolbars, sidebars, inspectors, and bottom bars. Historical measurements below are fallback calibration, not current system constants. Prefer system layout, intrinsic control sizes, safe areas, and the app's task model; verify on supported macOS versions.
 
 ## Core Layout Tests
 
-- Prefer center-equalized layouts: balance visual weight around the window's center axis without center-aligning everything.
-- Consistency beats exact numbers. A 18 pt margin used consistently is less harmful than one side at 20 pt and the other at 14 pt.
-- Align labels and controls deliberately. In stacked form rows, right-align category labels and left-align the controls they describe.
+- Balance visual weight where it helps the task. Do not force a sidebar/content/inspector workspace or document canvas into a symmetrical composition.
+- Keep margins consistent within comparable groups; intentional differences can express hierarchy or accommodate system chrome.
+- Align labels and controls deliberately. Two-column forms often use trailing-aligned labels and leading-aligned controls; use native grouped forms or stacked labels when they better accommodate long text and narrow panes.
 - Baseline-align controls in the same row, especially labels with pop-up buttons, text fields, combo boxes, pickers, and steppers.
 - Keep related controls visually close; separate groups with whitespace, separators, or group boxes only when the grouping earns the space.
-- Use full-size controls by default. Use small or mini controls only for inspectors, utility panels, palettes, dense accessory views, and space-constrained bottom bars.
+- Use regular system controls by default. Small or mini controls can suit inspectors, dense tables, utility panels, palettes, and accessory views; keep them legible and comfortable to target.
 - Do not mix control sizes casually inside one pane.
 
 ## Form and Settings Spacing
+
+Use native form spacing first. For custom layouts, these historical values can help diagnose crowding; do not impose fixed heights or override modern system spacing to match them.
 
 - Use about 20 pt margins around ordinary window content.
 - Controls directly below a titlebar or toolbar usually need about 14 pt top spacing.
@@ -20,7 +22,7 @@ Use this for concrete Mac window composition: settings forms, toolbars, sidebars
 - Use about 12 pt between a control group and bottom buttons.
 - Use 12-24 pt whitespace between groups when grouping by whitespace.
 - Group boxes need stronger internal padding, commonly about 16 pt on each side.
-- Help belongs at the lower-left of settings/dialog surfaces when present. Confirmation buttons belong at the lower-right, with the default action to the right of Cancel.
+- Let system dialogs arrange their own buttons. In custom left-to-right dialogs, dismissal actions usually sit at the lower-right with the default action to the right of Cancel; place Help opposite them. Settings panes without dismissal actions can place Help in either lower corner. Check localization rather than hard-coding physical left/right everywhere.
 - Optional descriptions under checkboxes/radio buttons should be secondary text, close to the control, and aligned with the control label text rather than the checkbox/radio glyph.
 
 ## Toolbars
@@ -47,17 +49,17 @@ Use this for concrete Mac window composition: settings forms, toolbars, sidebars
 
 - Use inspectors for contextual properties or metadata of the current selection.
 - Keep inspectors modeless, selection-aware, and quick to hide/show.
-- Prefer a right sidebar inspector for modern primary-window workflows.
+- Prefer a trailing sidebar inspector for modern primary-window workflows.
 - Use a floating inspector panel only when users need persistent auxiliary controls across windows or documents.
-- Inspector content should update immediately when selection or focus changes.
+- Update the inspector when the inspected selection changes. Keep that target stable when focus moves into the inspector's own editing controls, and represent empty or mixed selections clearly.
 - Hide irrelevant inspector sections; disable controls whose presence explains unavailable state.
 - Use small controls in inspector panels and dense inspectors. Keep grouping strong because inspectors are information-dense by nature.
-- Start inspector width limits near sidebar limits unless the content has a stronger reason.
+- Size inspectors for their actual labels, editors, and mixed-value states; navigation-sidebar widths need not fit a property form.
 
 ## Bottom Bars and Accessory Areas
 
 - Use bottom bars for persistent status or controls that apply to the visible content, not for primary navigation.
-- Large bottom bars are roughly 32 pt high; small bottom bars roughly 22 pt high.
+- Historical bottom bars were roughly 22–32 pt high. Size modern accessory areas to their actual controls and text, without forcing those heights.
 - Keep bottom-bar controls vertically centered and tightly related to the content above them.
 - Use secondary text for status labels.
 - Avoid turning bottom bars into a second toolbar. If a command matters globally, it probably belongs in the toolbar or menu.

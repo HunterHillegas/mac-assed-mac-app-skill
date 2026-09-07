@@ -60,12 +60,12 @@ Self-contained advice derived from Mac OS X / OS X HIG material. Use this when d
 - Familiar visual metaphors are functional, not decorative. Remove or restyle them only when the replacement preserves the same clarity.
 - For apps that sync or bridge external systems, keep data ownership clear. Prefer official APIs, open formats, or compatible canonical storage over private lock-in.
 - Documentation and onboarding are part of trust for professional Mac apps. A deep tool should explain itself with the same care it puts into the interface.
-- Durable pricing, trials, update terms, and licensing can affect product trust. They are not UI controls, but they shape whether the app feels like a professional Mac tool users can keep relying on.
 
 ## Mac App Shape
 
 - Use the menu bar as the complete command map.
 - Use windows for primary work, panels/inspectors for auxiliary properties, sheets for window-specific modal choices, alerts for important warnings/errors, and preferences/settings for durable choices.
+- Adapt the inventory to the app type. A menu bar utility may work through a status menu and a settings window; it does not need a document window, sidebar, or empty standard menus to qualify as a Mac app.
 - Be unafraid of windows. Documents, comparisons, detachable palettes, inspectors, and multi-display workflows may deserve separate windows or tabs instead of being forced into one iPad-like surface.
 - Use sidebars/source lists for sources and collections; use tables/lists/outlines for scannable collections; use detail panes/canvases for selected content.
 - Keep chrome subordinate to user content. The main window should be a working surface, not a launch page.

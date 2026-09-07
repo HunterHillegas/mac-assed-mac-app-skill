@@ -11,6 +11,8 @@ This is a map of the self-contained derived guidance bundled with the skill. It 
 - `mac-ui-text.md`: capitalization, ellipses, colons, labels, menu copy, alert copy, help text, and punctuation.
 - `mac-assedness.md`: expressive Mac software, platform identity, behavioral depth, technical foundation, custom UI decision-making, evolving Mac culture, and modern macOS tradeoffs.
 - `current-macos-design.md`: current Apple source deltas for macOS 26+, AppKit structure, Liquid Glass, accessibility, icons, documents, undo, text, pasteboard, and menu-icon judgment.
+- `swiftui-mac-behavior.md`: SDK/OS availability, focus, selection, context targets, keyboard handling, drag lifecycle, reordering, toolbars, documents, and primary API links.
+- `mac-ui-verification.md`: task-sized runtime checks and evidence standards for commands, focus, selection, text, drag, windows, accessibility, and appearance.
 - `production-app-examples.md`: production screenshots and notes for Proxyman and NetNewsWire as Mac-assed calibration examples.
 
 ## Derived Topic Coverage
@@ -22,19 +24,19 @@ This is a map of the self-contained derived guidance bundled with the skill. It 
 - Icons: app icons, document icons, toolbar icons, sidebar icons, perspective, texture, high-resolution resources, consistent metaphors.
 - Menus: menu behavior, naming, grouping, dynamic items, toggles, symbols, hierarchy, menu bar menus, contextual menus, Dock menus.
 - Windows: window appearance, title bars, scrolling, moving, layering, main/key/inactive states, full screen, proxy/title behavior, toolbars, scope bars, sidebars, bottom bars, popovers, panels, dialogs, sheets, preferences, open/choose/save/print/find dialogs, alerts.
-- Layout structure: center-equalized window composition, consistent margins, baseline alignment, grouped settings forms, toolbar command ranking, sidebar width constraints, inspector behavior, and bottom-bar use.
+- Layout structure: task-appropriate visual balance, system sizing versus historical metrics, baseline alignment, grouped settings forms, toolbar command ranking, sidebar width constraints, inspector behavior, and bottom-bar use.
 - Controls: buttons, selection controls, text controls, indicators, sliders/steppers, segmented controls, tab views, group boxes, disclosure/progressive detail, control state, pasteboard behavior, and multi-selection.
 - Text style: ellipses, colons, labels, capitalization, contractions, punctuation, alert wording, user/developer terminology.
 - Mac-assedness: Mac behavior over mere Mac appearance, structural conventions vs expressive opportunities, fun and craft, native behavior over native pixels, power-user depth, state restoration, configurability, windowing, native technology tradeoffs, custom icon/control judgment, and examples from Sketch, Nova, and iA Writer.
 - Production examples: screenshots of dense professional tools and content apps that keep Mac structure intact while expressing product identity.
 - Good Mac citizenship: standard menus, Settings behavior, Services, text-field semantics, toolkit-independent platform fit, documentation, data ownership, and durable professional trust.
 - Safari 15 caution: tabs, active-state clarity, content-vs-chrome ownership, visual metaphor, hover-hidden destructive controls, and change that worsens learned behavior.
-- SwiftUI Mac reality: pure SwiftUI can work, but selection nuance (`appearsActive`, `backgroundProminence`), context-menu targets, drag-session feedback (`onDragSessionUpdated`), reordering, intent-level keyboard navigation, and toolbar placement/overflow need explicit Mac verification, availability checks, or AppKit bridging.
+- SwiftUI Mac reality: see `swiftui-mac-behavior.md` for the maintained API guidance. Verify focus, selection, context targets, drag completion, keyboard handling, and toolbar placement on supported macOS versions.
 - Current macOS source deltas: Liquid Glass as a functional layer, toolbars and sidebars as ownership signals, current control sizing, scroll edge legibility, menu-icon restraint, Mac VoiceOver structure, document/undo architecture, text/pasteboard contracts, real Mac behavior checks, and current icon resources.
 
 ## Version Bias
 
-- Prefer later OS X guidance for current macOS behavior when guidance conflicts.
+- Prefer current Mac-specific documentation and observed behavior on supported macOS. Use later historical HIG guidance only to resolve disagreements within the historical material.
 - Preserve durable Mac principles from older material.
 - Treat visual treatments tied to old Aqua fashion as historical unless the user asks for retro styling.
 - Treat Mac culture as cumulative rather than pure: keep learned behaviors that still matter, adopt newer conventions when they improve Mac use, and reject imported patterns that reduce platform depth.

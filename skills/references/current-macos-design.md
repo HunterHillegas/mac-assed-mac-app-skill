@@ -2,6 +2,13 @@
 
 Use this when a task depends on current macOS behavior, macOS 26+ visual language, AppKit specifics, accessibility, icons, document architecture, undo, or conflicts between older HIG guidance and current Apple design direction.
 
+## Version and Authority
+
+- This reference combines macOS 26 design guidance with durable behavior; it is not a guarantee about every later release. Check the supported OS and current Apple sources for version-sensitive decisions.
+- Verify API signatures and availability in the project's SDK or Apple documentation. Keep beta guidance conditional and provide a compatible path for older targets.
+- Apple documentation establishes supported behavior and API contracts. The menu-icon recommendations below also include editorial judgment; they are not universal platform requirements.
+- For SwiftUI-specific APIs, use [swiftui-mac-behavior.md](swiftui-mac-behavior.md).
+
 ## Source Map
 
 - Apple HIG current component pages: menus, windows, toolbars, sidebars, alerts, drag and drop, SF Symbols, and app icons.
@@ -42,15 +49,15 @@ Use this when a task depends on current macOS behavior, macOS 26+ visual languag
 - Current macOS allows broader menu-icon use, but icons still need a reason.
 - Add menu icons when they speed recognition of object types, destinations, spatial layouts, devices, apps, media, or frequently scanned key actions.
 - Skip menu icons when they merely restate the label, add indentation noise, or make a mixed menu harder to scan.
-- Keep icon columns visually consistent within a menu section. Inconsistent icon/no-icon rows can make text alignment worse.
+- Let the system lay out menu icons and labels. Mixed icon/no-icon rows can be appropriate; judge actual alignment and scanability rather than adding filler icons for symmetry.
 - Prefer recognizable SF Symbols for system-like commands. Use custom symbols only when the metaphor is domain-specific and clearer than the generic option.
 - Test menus on the target OS. If the system adds icons automatically, judge the real rendered menu, not the source code alone.
 
 ## Documents and Undo
 
 - Document-based apps should make document identity, edited state, save/revert, printing, autosave, versions, and multiple windows feel native.
-- Prefer AppKit document architecture when the app genuinely edits user-owned documents or files.
-- All persistent document changes should be undoable. A partial undo chain can make the document state dishonest or inconsistent.
+- Prefer framework document support when it fits: SwiftUI `DocumentGroup` or AppKit document architecture according to the app's needs. Preserve a working document model; a file-based app does not automatically need an AppKit rewrite.
+- Keep document edits in a coherent undo history. A non-undoable model mutation must not leave older undo actions referring to invalid state. Saving, syncing, and external side effects need explicit lifecycle/recovery behavior rather than being treated as ordinary editable content.
 - Put undo registration near model primitives where possible; set user-facing undo action names at the command/action layer.
 - Undo/Redo menu labels should name the user intent, not the implementation operation.
 - Undo selection changes when it helps visual continuity, especially in drawing, layout, editing, or multi-pane document tools.
@@ -69,6 +76,7 @@ Use this when a task depends on current macOS behavior, macOS 26+ visual languag
 - Use rotors or equivalent navigation shortcuts when a visual scan has an accessibility counterpart, such as bookmarks, headings, errors, pages, sections, or results.
 - Hover-only and gesture-only actions need accessible alternatives through visible commands, menus, context menus, or explicit accessibility actions.
 - Keep accessibility focus and keyboard focus coherent, but do not assume they are the same state.
+- Respect Increase Contrast, Reduce Transparency, and Reduce Motion when customizing materials, colors, or animation. Use semantic state and redundant cues so color alone does not carry meaning.
 
 ## Icons and Design Resources
 
@@ -93,6 +101,7 @@ Use this when a task depends on current macOS behavior, macOS 26+ visual languag
 - https://developer.apple.com/videos/play/wwdc2020/10104/
 - https://developer.apple.com/videos/play/wwdc2025/229/
 - https://developer.apple.com/documentation/AppKit/developing-a-document-based-app
+- https://developer.apple.com/documentation/swiftui/documentgroup
 - https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/UndoArchitecture/Articles/AppKitUndo.html
 - https://developer.apple.com/documentation/AppKit/NSTextView
 - https://developer.apple.com/documentation/appkit/nspasteboard/

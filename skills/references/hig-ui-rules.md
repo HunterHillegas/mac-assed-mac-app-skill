@@ -4,7 +4,7 @@ Use this as the working rulebook when updating macOS UIs. It synthesizes the Mac
 
 ## Source Priority
 
-- Prefer 2013 guidance when versions conflict.
+- Prefer current Mac-specific Apple guidance and verified behavior on the app's supported OS. Use later historical HIG guidance only to resolve conflicts within the historical material.
 - Treat older guidance as useful for durable Mac principles and Aqua-era details, not as permission to revive deprecated controls.
 - Keep visual style modern unless the user explicitly asks for period-accurate Aqua.
 - Use [mac-assedness.md](mac-assedness.md) when the question is about originality, taste, custom controls, visual identity, or modern Apple design-language tradeoffs.
@@ -34,7 +34,7 @@ Use this as the working rulebook when updating macOS UIs. It synthesizes the Mac
 - Use contextual menus for shortcuts to visible-object actions, not as the only home for essential commands.
 - Name menu items as actions. Prefer clear verbs: `Export…`, `Duplicate`, `Show Inspector`, `Hide Sidebar`.
 - Use title-style capitalization for menu titles, menu items, push buttons, and toolbar labels.
-- Use a U+2026 ellipsis for commands that need more user input before executing: `Open…`, `Export…`, `Find…`, `Print…`, `Settings…`.
+- Use a U+2026 ellipsis for menu commands that require further input: `Open…`, `Export…`, `Print…`. Preserve standard system labels such as `Settings…`; see [mac-ui-text.md](mac-ui-text.md) for menu versus push-button conventions.
 - Do not use an ellipsis for commands that execute immediately, merely show a panel, or only sometimes show an alert: `Save`, `Duplicate`, `Get Info`, `Show Inspector`, `Close`.
 - Use toggled menu items to reflect state. Make state text unambiguous.
 - Use separators to group related menu items. Avoid long unstructured menus.
@@ -52,7 +52,7 @@ Use this as the working rulebook when updating macOS UIs. It synthesizes the Mac
 - Open new windows in predictable positions. Preserve user resizing and placement when appropriate.
 - Make windows resizable unless the content truly has fixed dimensions.
 - Respect main/key/inactive states. Avoid custom styling that erases focus and activation cues.
-- Use window titles for document/content identity, not raw file paths.
+- Use window titles for document/content identity. Expose location through standard document/path affordances when users need to distinguish files.
 - Support proxy/document behavior when the app is document-based and the framework provides it.
 - Avoid drawers in modern macOS UI. Older HIGs documented drawers, but later guidance and platform practice moved toward sidebars, panels, popovers, and inspectors.
 - Use bottom bars/status areas only for persistent status or controls that apply to the visible content.
@@ -81,7 +81,7 @@ Use this as the working rulebook when updating macOS UIs. It synthesizes the Mac
 - Do not make controls perform surprising side effects. If changing a value applies immediately, make the result visible and reversible.
 - Disable unavailable controls instead of hiding them when their presence teaches the model. Hide only when the control is irrelevant in the current context.
 - Use progressive disclosure for advanced or rarely used settings.
-- Avoid custom skinned controls unless the task genuinely needs a direct-manipulation surface.
+- Prefer standard controls. Custom styling or controls need a concrete benefit in clarity, interaction, or identity and must preserve expected behavior; see [mac-assedness.md](mac-assedness.md).
 - Avoid deprecated Aqua-era controls in modern apps. Bevel buttons, drawers, and brushed-metal styling are historical guidance, not current defaults.
 - If customizing controls, preserve expected control behavior, keyboard access, accessibility semantics, focus/disabled/pressed states, and future maintainability.
 
@@ -107,8 +107,8 @@ Use this as the working rulebook when updating macOS UIs. It synthesizes the Mac
 - End complete sentences with punctuation. Do not punctuate fragments unless grammar requires it.
 - Use one space between sentences.
 - Use a colon after introductory text that labels a following control or group of controls. Do not use colons in button labels, menu items, tab titles, segmented controls, table headings, or group box titles.
-- Match dialog titles to the invoking command without the ellipsis.
-- Use contractions only when space is tight and meaning remains clear.
+- When a task dialog needs a title, match the invoking command without its ellipsis. Alert titles should describe the situation.
+- Use familiar contractions when they suit the app's voice and remain clear.
 
 ## Icons and Visual Detail
 
@@ -128,6 +128,7 @@ Use this as the working rulebook when updating macOS UIs. It synthesizes the Mac
 - Preserve selection predictably after actions.
 - Provide undo for edits, moves, deletes, and reordering wherever feasible.
 - Support keyboard selection and navigation alongside pointer interactions.
+- Keep command targets tied to the intended window, pane, or text editor. Context-menu targets and persistent selection can differ; make the affected objects clear.
 
 ## Feedback, Responsiveness, and Trust
 

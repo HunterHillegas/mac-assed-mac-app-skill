@@ -142,7 +142,7 @@ The test is not origin. The test is whether the pattern makes the Mac app easier
 
 ## Native Technology Judgment
 
-- Prefer AppKit or SwiftUI with AppKit bridges when deep Mac behavior matters.
+- For new native surfaces, consider AppKit or SwiftUI and bridge where needed. Preserve an existing toolkit unless a concrete behavior gap warrants a change within the requested scope.
 - SwiftUI can be Mac-assed, but inspect missing Mac-specific affordances and bridge where needed.
 - Catalyst and web/Electron-style stacks need extra scrutiny: navigation, windowing, menu behavior, pointer handling, keyboard shortcuts, text editing, performance, accessibility, and system services often reveal the uncanny valley.
 - Native code is not automatically better for every subsystem. Extension ecosystems, scripting, import/export formats, and plugin APIs can reasonably use more portable technology if the Mac shell remains excellent.
@@ -150,16 +150,9 @@ The test is not origin. The test is whether the pattern makes the Mac app easier
 
 ## SwiftUI Mac Reality
 
-SwiftUI can ship a good Mac app, but pure SwiftUI still needs scrutiny where AppKit solved details years ago:
+SwiftUI can ship a good Mac app. Verify focus, selection emphasis, context-menu targets, drag completion, keyboard navigation, and toolbar placement rather than assuming the framework supplies every behavior in every composition.
 
-- Selection has layers: active-window selection, inactive-window selection, selected-but-not-focused state, and context-menu target. Users need to see which object is selected and which pane receives keyboard input.
-- System `List` often gets Mac selection and context-menu behavior right because it inherits table behavior. Custom `ScrollView`/`LazyVStack` lists must recreate focus, emphasized selection, inactive-window appearance, and context-menu target feedback deliberately.
-- Read `appearsActive` when styling custom selected rows. For selection emphasis, prefer SwiftUI's `backgroundProminence`: `List`, `Table`, and `ShapeStyle.selection` update it automatically, and custom collections can propagate a focus-derived value through the environment. A selected row in an inactive window or unfocused pane should not look like the key-window, focused selection.
-- Right-clicking an unselected object should not casually change selection. If the menu applies to the clicked object, show a separate context target affordance. SwiftUI still may not expose whether a context menu is open outside system collection behavior; use `List`/`Table`, bridge to AppKit, or document the gap rather than faking selection.
-- Drag and drop is core Mac behavior. When the SDK and deployment target permit, use `.onDragSessionUpdated` to track source-side lifecycle and clean up even after an external drop; use `.reorderable` for straightforward reordering on OS 27+. For older targets or behavior those APIs cannot express, bridge to AppKit rather than leaving dimmed or stale drag state behind.
-- Keyboard support must go beyond command shortcuts. Lists need arrow-key navigation; search fields should allow typing while arrowing through results when that matches the task; panes need clear focus behavior. Prefer intent-level `.onMoveCommand` on macOS. Use `.onKeyPress` only when shared cross-platform code or lower-level key handling justifies losing that semantic intent.
-- SwiftUI toolbar placement can be too abstract for complex Mac windows. Design one coherent Mac toolbar; do not accept scattered `.toolbar` modifiers if they produce surprising placement or mix sidebar/detail ownership. Use `.visibilityPriority` to tune overflow order where available, not as a substitute for coherent placement and ownership.
-- Reuse across iOS, iPadOS, and macOS is valuable, but not when it erases Mac-only behaviors. Fork or bridge platform-specific interaction where needed.
+Use [swiftui-mac-behavior.md](swiftui-mac-behavior.md) for API choices, availability checks, and narrow AppKit fallbacks. Platform-specific interaction can differ while the rest of the app remains shared.
 
 ## Professional Tool Trust
 
@@ -170,7 +163,6 @@ Mac-assed professional apps often earn trust outside the visible UI:
 - They interoperate with adjacent workflows and web UIs instead of trapping work in a private silo.
 - They import, export, copy, paste, drag, reveal, and open user data in common formats when the domain reasonably allows it.
 - They document the tool with the same care as the product UI.
-- They use pricing, licensing, trials, and update policies that respect long-term professional use. This is not a UI rule, but it affects whether the app feels like a durable Mac tool.
 
 ## Hierarchy and Modern macOS
 
