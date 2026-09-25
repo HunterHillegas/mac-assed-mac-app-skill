@@ -22,7 +22,7 @@ Read the references that match the task; there is no mandatory bundle. For a bro
 | Menus, commands, windows, controls, selection, drag, Services | [mac-ui-elements.md](references/mac-ui-elements.md) |
 | Geometry, toolbar, sidebar, inspector, panel, preferences/settings, dense forms | [mac-layout-structure.md](references/mac-layout-structure.md) |
 | Labels, capitalization, ellipses, alerts, buttons, menu or help copy | [mac-ui-text.md](references/mac-ui-text.md) |
-| Branding, custom controls, iconography, personality, “does this feel Mac-assed?” | [mac-assedness.md](references/mac-assedness.md) |
+| Branding, stock versus custom UI, iconography, personality, “does this feel Mac-assed?” | [mac-assedness.md](references/mac-assedness.md) |
 | SwiftUI focus, selection, context menus, drag lifecycle, keyboard handling, toolbar overflow | [swiftui-mac-behavior.md](references/swiftui-mac-behavior.md) |
 | Liquid Glass, OS-specific visuals, accessibility, document/undo architecture, historical conflicts | [current-macos-design.md](references/current-macos-design.md) |
 | Visual calibration using production examples | [production-app-examples.md](references/production-app-examples.md) |

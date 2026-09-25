@@ -43,7 +43,7 @@ Check platform citizenship before judging visual style:
 
 Native controls are valuable because they carry decades of hidden behavior. A text field is not just a rectangle that accepts characters; it is selection, key bindings, spelling, substitutions, focus rings, accessibility, undo, contextual menus, Services, drag, and pasteboard behavior.
 
-When a custom or cross-platform control is unavoidable:
+When choosing a custom or cross-platform control:
 
 - Inventory the native behavior before replacing it. Test the system control and record the selection, keyboard, context-menu, drag, pasteboard, active/inactive, focus, accessibility, disabled, and error states users will expect.
 - Recreate behavior that matters, not only the appearance. If users rely on a hidden behavior in other Mac apps, missing it breaks flow even when the control looks fine.
@@ -106,6 +106,17 @@ Use the expressive layer for identity:
 - Documentation, onboarding, and release communication that feel like part of a serious Mac product, not an afterthought.
 
 ## Decision Rule for Custom UI
+
+### Stock Appearance Is a Choice
+
+Brent Simmons's [That About Wraps It Up for Stock Mac UI](https://inessential.com/2026/09/22/that-about-wraps-it-up-for.html) challenges stock styling as a proxy for usability or inexpensive upkeep. Apply that critique selectively:
+
+- Evaluate whether people can recognize and use commands; stock appearance alone does not establish familiarity, and custom appearance alone does not establish confusion.
+- Compare maintenance costs for the actual surface. System controls supply behavior, but adopting a new OS appearance can still demand substantial redesign. Custom UI carries its own continuing obligations. Neither approach guarantees cheaper upgrades.
+- Treat Apple's visual direction as a design input. Choose materials, sidebar treatment, and command placement for legibility and task fit; do not require glass or a stock toolbar merely to certify Mac identity.
+- Simmons's NetNewsWire experience is one developer's report, and his experimental redesign was unshipped. Use it to question assumptions, not as proof that custom UI always wins.
+
+### Preserve the Interaction Contract
 
 Use custom UI when at least one is true:
 
